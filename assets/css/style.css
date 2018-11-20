@@ -1,0 +1,114 @@
+/*Fonte para o site*/
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes');
+
+body{
+	margin:0;
+}
+header {
+	margin-top:3px;
+
+}
+
+.logoint {
+	height:50px;
+}
+.logoint a {
+	
+	font-size:38px;
+	color:#000;
+	background: -webkit-linear-gradient(#000, #FFF);
+	font-family: 'Great Vibes', cursive;
+  	-webkit-background-clip: text;
+	text-decoration:none; 
+}
+
+/* Busca header*/
+.container_busca {
+	
+	
+	height:50px;
+	width:100%;
+	
+
+	display:flex;
+
+	align-items:center;
+	flex-direction:row-reverse;	
+
+}
+#busca {
+	
+	
+	height:35px;
+	
+}
+.botao_busca {
+	
+	height:35px;
+
+	background-color:#fff;
+	border: 1px solid #ced4da;
+	position:absolute;
+	
+
+}
+.botao_busca:hover {
+	background-color:#e7e3e3;
+}
+.botao_busca img {
+	line-height:35px;
+
+}
+
+
+/*  Icones login, curtir, carrinho*/
+
+.icones {
+	height:50px;
+	display:flex;
+	align-items:center;
+	float:right;
+
+}
+
+/* Menu */
+nav {
+	background-image: linear-gradient(to left, #232020, #161414);
+	height:40px;
+	text-align:center;
+	line-height:40px;
+	align-items:center;
+	font-size:20px;
+}
+.list_menu {
+	height:40px;
+	display:flex;
+	
+/*	background: -webkit-linear-gradient(#000, #FFF);
+	-webkit-background-clip: text;
+	text-decoration:none; */	
+
+}
+.list_menu ul {
+	height:40px;
+
+}
+.list_menu li {
+	float:left;
+	
+	list-style:none;
+	height:40px;
+	width:130px;
+}
+.list_menu li a {
+
+	color:#FFF;
+	text-decoration:none;
+	height:40px;
+}
+
+
+.filtro {
+	float:right;
+	color:#FFF;
+}
