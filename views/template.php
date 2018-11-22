@@ -3,14 +3,16 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Loja</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
 		<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css" />
 
 		<!-- Jquery/ javascript -->
-		<script type="text/javascript" href="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
+		
 		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.min.js"></script>
+		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/script.js"></script>
 		
 	</head>
 	<body>
@@ -35,9 +37,9 @@
 					</div>
 					<div class="col-sm-2">
 						<div class="icones">
-							<img height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/heart.png" />
-							<img height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/bag.png" />
-							<img height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/user.png" />
+							<a href="<?php echo BASE_URL; ?>"> <img height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/heart.png" /></a>
+							<a href="<?php echo BASE_URL; ?>"> <img height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/bag.png" /></a>
+							<a href="<?php echo BASE_URL; ?>login" ><img  onmove="touch_item()" height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/user.png" /></a>
 						</div>
 					</div>
 
@@ -72,16 +74,18 @@
 				</div>
 			</div>
 		</nav>
+		<div class="container">
 
 
 
 		
 		<?php
-		//$this->loadViewInTemplate($viewName, $viewData);
+			$this->loadViewInTemplate($viewName, $viewData);
 		?>
+		</div>
+
+		<!-- <script type="text/javascript" src="<?php //echo BASE_URL; ?>assets/js/bootstrap.bundle.min.js"></script> -->
 
 
-
-		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/script.js"></script>
 	</body>
 </html>
