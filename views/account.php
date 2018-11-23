@@ -4,11 +4,11 @@
 	<div class="col-sm">
 		<div class="painel_btns">
 			<div class="painel_container">
-				<a href="" class="btn ">Painel</a>
+				<a href="<?php echo BASE_URL; ?>users/account?p=0" class="btn ">Painel</a>
 
-				<a href="" class="btn ">Meus Pedidos</a>
-				<a href="" class="btn ">Endereço</a>
-				<a href="" class="btn">Lista de Desejos</a>
+				<a href="<?php echo BASE_URL; ?>users/account?p=1" class="btn ">Meus Pedidos</a>
+				<a href="<?php echo BASE_URL; ?>users/account?p=2" class="btn ">Endereço</a>
+				<a href="<?php echo BASE_URL; ?>users/account?p=3" class="btn">Lista de Desejos</a>
 
 				<a  href="<?php echo BASE_URL; ?>users/logout" class="btn btn_logout">Sair</a>
 			</div>

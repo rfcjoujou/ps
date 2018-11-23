@@ -123,7 +123,98 @@ nav {
 	color:#FFF;
 }
 
+
+/* Ciração do rodapé */
+.rodape {
+	margin-top:30px;
+	width:100%;
+	height:500px;
+	background-color:red;
+	padding-right:2.5px;
+	padding-left:2.5px;
+}
+/* Agente so vai aplicar uma imagem para que o conteudo não fique colado */
+.primeiroitemrodape
+.rodapetitulo {
+	margin-right:5px;
+	
+}
+/* TItulo de cima no rodapé */
+.tituloFooter {
+	margin-top:10px;
+	text-transform:uppercase;
+	margin-bottom:2px;
+
+}
+
+/* Para enviar notificação */
+#assinatura {
+	width:170px;
+	height:32px;
+	font-size:12px;
+
+}
+/* Menu do footer principal Aplicação de cor*/
+#footerint {
+	background-image: linear-gradient(to left, #0f0e0e, #0e0909);
+
+}
+
+/* Coisa do itens do footer 2 aba */
+#itemfooter {
+	margin-top:-10px;
+	font-size:15px;
+}
+#itemfooterp {
+	
+	font-size:15px;
+}
+
+#itemfooter a:hover {
+	background-color:#6f6b6b;
+	
+}
+#itemfooterp a:hover {
+	background-color:#6f6b6b;
+	
+}
+.footersubitem {
+	width:240px;
+}
+/* Parte de endereço e email */
+#enderecoint {
+	background-color:#fff;
+}
+.endereco {
+	color:#403d3d;
+	font-size:13px;
+	margin-bottom:0px;
+
+}
+/* Linha de email */
+.email {
+	color:#403d3d;
+	font-size:13px;
+	margin-top:-15px;
+}
+
 /* Home.php (view)*/
+
+.carousel-item {
+	background-color:red;
+	width:100%;
+} 
+
+.carousel-item img {
+	height:600px;
+	width:100%;
+}
+
+/* Informações de home.php*/
+
+.metodo_pag {
+	background-color:#EEE;
+}
 
 /* Login e Registro Form(login.php)*/
 .form_login {
@@ -161,14 +252,24 @@ nav {
 
 /* View account.php*/
 
+
 .painel_container {
-	width:100%;
+
 
 	display:flex;
 	margin:auto;
 	/*flex-direction:column;*/
 	
 
+}
+.painel_btns {
+
+
+
+	margin-top:5px;
+	border:8px solid #fff;
+	background-image: linear-gradient(to left, #232020, #161414);
+	/* Cinza: background-color:#909090;*/
 }
 
 .painel_container a {
@@ -180,17 +281,17 @@ nav {
 
 }
 
+
 .painel_container a:hover {
-	border-top:4px solid #d4d4d4;
-	border-bottom:4px solid #d4d4d4;
-	border-color: #d4d4d4;
+	border-top:4px solid #b5b4b4;
+	border-bottom:4px solid #b5b4b4;
+	border-color: #b5b4b4;
 } 
-.btn_logout {
-}
+
 .perfil {
 	display:flex;
-	
-	background-color:#d4d4d4;
+	background-image: linear-gradient(to right, #8e8e8e, #bdbcbc);
+	background-color:#8e8e8e;
 	align-items:center;
 	flex-direction:column;
 }
@@ -199,17 +300,11 @@ nav {
 	width:400px;
 	margin-bottom:10px;
 
-
+	color:#edf7f7;
 }
-.painel_btns {
 
-	width:100%;
 
-	margin-top:5px;
-	border:8px solid #fff;
 
-	background-color:#909090;
-}
 
 
 

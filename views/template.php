@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		
 		<meta charset="utf-8" />
 		<title>Loja</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
@@ -10,9 +11,7 @@
 
 		<!-- Jquery/ javascript -->
 		
-		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.min.js"></script>
-		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/script.js"></script>
+
 		
 	</head>
 	<body>
@@ -74,18 +73,170 @@
 				</div>
 			</div>
 		</nav>
+		<?php if($viewName == 'home'): ?>
+			
+				<div class="container-fluid" style="margin:0;padding:0;">		
+					<?php
+					
+					$this->loadViewInTemplate($viewName, $viewData);
+				
+					?>
+				</div>
+			
+		<?php else :?>
+
 		<div class="container">
 
 
 
 		
-		<?php
-			$this->loadViewInTemplate($viewName, $viewData);
-		?>
+			<?php
+				$this->loadViewInTemplate($viewName, $viewData);
+			?>
 		</div>
+		<?php endif; ?>
+	
+		<footer class="page-footer font-small teal pt-4">
 
-		<!-- <script type="text/javascript" src="<?php //echo BASE_URL; ?>assets/js/bootstrap.bundle.min.js"></script> -->
+    		<!-- Footer Text -->
+    		<div class="container-fluid text-center text-md-left" id="footerint" style="background-color:white;">
+    			<div class="row">
+    				<div class="col-sm" style="color:white">
 
+    					<!-- Primeiro bloco do footer-->
+
+    					<div class="tituloFooter" >
+    						<h5 style="font-size:20px;">Pagamento</h5>
+    						<img src=""/>
+    					</div>
+
+    					<div class="tituloFooter2">
+
+    						<h5 class="text-uppercase" style="font-size:20px;">Compra segura</h5>
+    						<p >E oq</p>
+    					</div>
+
+    					<div class="tituloFooter3">
+
+    						<h5 class="text-uppercase" style="font-size:18px;">Descontos</h5>
+
+
+    					</div>
+
+    				</div>
+    				<div class="col-sm" style="color:white">
+    					<!-- Segundo bloco do footer-->
+    					<div class="tituloFooter">
+
+    						<h5 style="text-uppercase;font-size:20px;" >Duvida</h5>
+    						<p style="text-transform:none;" id="itemfooterp"><a href="#" style="text-decoration:none;color:white;">Frete/prazo</a></p>
+    						
+	    					<p style="text-transform:none;" id="itemfooter"><a href="#" style="text-decoration:none;color:white;">Lojas</a></p>
+
+	    					<p style="text-transform:none;" id="itemfooter"><a href="#" style="text-decoration:none;color:white;">Sobre</a></p>
+
+	    					<p style="text-transform:none;" id="itemfooter"><a href="#" style="text-decoration:none;color:white;">Como comprar</a></p>
+	    					
+    						
+
+    					</div>
+
+    				
+    				</div>
+
+
+    				<div class="col-sm" style="color:white">
+    					<!-- Penultimo bloco do footer-->
+
+    					<div class="tituloFooter">
+    						<h5 class="text-uppercase" style="font-size:20px;">Pagamento</h5>
+    						
+    						<p >b</p>
+    						
+
+    					</div>
+
+    					<div class="tituloFooter2" >
+
+    						<h5 class="text-uppercase" style="font-size:20px;"><a href="" style="color:white">Trocas e Devoluções</a></h5>
+
+    						<div class="footersubitem" style="background-color:white;">
+
+    						</div>
+
+    					</div>
+
+    					<div class="tituloFooter3">
+
+
+    						<h5 class="text-uppercase" style="font-size:20px;">Pagamento</h5>
+    						<div class="footersubitem" style="background-color:white;">
+
+
+    						</div>
+    					</div>
+    				</div>
+
+    					<!-- Ultimo bloco do footer-->
+    				<div class="col-sm" style="color:white">
+    					<!-- Para enviar notificação -->
+    					<div class="tituloFooter">
+
+    						<h5 class="text-uppercase" style="font-size:18px;;">Notificações</h5>
+    						<div class="footersubitem" style="background-color:#110d0d;">
+	    						<input type="text" placeholder="Seu e-mail..." name="assinatura" id="assinatura"/>
+	    						<input type="submit" value="Assine"/>
+	    					</div>
+    					</div>
+
+    					<div class="tituloFooter2">
+
+    						<h5 class="text-uppercase" style="font-size:20px;">Contatos</h5>
+    						
+
+    						<a href="https://www.instagram.com/arrazoblend/?hl=pt-br"><img src="assets/images/instagraam.png"/></a>
+    						<p></p>
+
+    						
+    						
+
+    					</div>
+
+
+    					<div class="tituloFooter3">
+
+    						<h5 class="text-uppercase" style="font-size:20px;">....</h5>
+
+
+    					</div>
+
+    					
+    				</div>
+
+    			</div>
+
+    			<!-- Segunda linha de endereço -->
+    			<div class="row">
+    				<div class="col-sm" id="enderecoint">
+    					<div class="endereco">
+    						<p>Rua major Joaquim A. De Campos 5810 -Santo Amaro da Imperatriz, SC-CEP: 88140000</p>
+    					<div class="email">
+    						<p>Contato: arrazoblend@gmail.com</p>
+    					<div>
+    					</div>
+
+    				</div>
+    			</div>
+    		</div>
+
+
+		</footer>		
+
+		<!-- Jquery/ javascript -->
+		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.min.js"></script>
+		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.bundle.min.js"></script> 
+		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/script.js"></script>
 
 	</body>
 </html>

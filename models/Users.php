@@ -70,4 +70,6 @@ class Users extends Model
 		return $array;
 
 	}
+
+	
 }

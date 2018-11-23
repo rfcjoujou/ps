@@ -30,7 +30,7 @@
 			
 		</form><br/>
 		<p>
-			Não tem conta? <a href="<?php echo BASE_URL; ?>users/register" style="margin:auto;" class="botao_user register">Cadastre-se</a>.
+			Não tem conta?<a href="<?php echo BASE_URL; ?>users/register" style="margin:auto;" class="botao_user register">Cadastre-se</a>.
 		</p> 
 	</div>
 
