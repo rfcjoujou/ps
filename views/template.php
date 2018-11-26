@@ -73,29 +73,21 @@
 				</div>
 			</div>
 		</nav>
-		<?php if($viewName == 'home'): ?>
-			
-				<div class="container-fluid" style="margin:0;padding:0;">		
-					<?php
+
+		<section>
+			<?php if($viewName == 'home'): ?>
 					
-					$this->loadViewInTemplate($viewName, $viewData);
-				
-					?>
-				</div>
-			
-		<?php else :?>
+			<div class="container-fluid" style="background-color:black;border-bottom:15px solid #000;margin-bottom:5px;">		
+					<?php $this->loadViewInTemplate($viewName, $viewData); ?>
+			</div>
+			<?php else :?>
 
-		<div class="container">
-
-
-
+			<div class="container">	
+					<?php $this->loadViewInTemplate($viewName, $viewData); ?>
+			</div>
+			<?php endif; ?>
+		</section>
 		
-			<?php
-				$this->loadViewInTemplate($viewName, $viewData);
-			?>
-		</div>
-		<?php endif; ?>
-	
 		<footer class="page-footer font-small teal pt-4">
 
     		<!-- Footer Text -->

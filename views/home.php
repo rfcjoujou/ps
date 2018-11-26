@@ -39,11 +39,44 @@
 	<div class="row" style="margin-left:0px;">
 		<div class="col-sm">
 			<div class="metodo_pag">
-				
+					
 				<img src="<?php echo BASE_URL; ?>assets/media/pagamento_icone/card.png" />
 				<div class="text_pag">Até {5x} sem Juros no CARTÃO.</div>
 
 			</div>
 		</div>
 	</div>
+
+	<div class="row">
+		<?php 
+		$a = 0;
+		$q = 0;
+		?>
+
+	<?php foreach($products as $product): ?>
+			<div class="col-sm-3">
+			<?php $this->loadView('container_prod', $product); ?>
+			</div>
+
+
+			<?php
+				
+			if($a >= 3) {
+				$a = 0;
+				$q++;
+
+				echo '</div><div class="row">';
+
+
+			} elseif ($a < 5) {
+				$a++;
+
+
+			}
+
+			?>
+	<?php endforeach ?>
+
+	</div>
+	
 </div>
