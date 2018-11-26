@@ -5,9 +5,15 @@ class Products extends model
 		$array = array();
 		
 
+		if(!empty($limite)) {
+			$limite = "LIMIT ".$limite;
+		} else {
+			$limite = " ";
+		}
+
 		$sql = "SELECT *, 
 		( select categories.name from categories where categories.id = products.id_category ) as category_name
-		FROM products LIMIT ".$limite;
+		FROM products ".$limite;
 		$sql = $this->db->query($sql);
 
 		if($sql->rowCount() > 0) {

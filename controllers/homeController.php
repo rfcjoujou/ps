@@ -6,12 +6,16 @@ class homeController extends Controller {
         $products = new Products();
 
         $products = $products->getProducts(12);
+        
 
         if(!empty($products)) {
         	
         	$dados['products'] = $products;
 
+
+
         }
+
 
         $this->loadTemplate('home', $dados);
     }

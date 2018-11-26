@@ -234,6 +234,8 @@ nav {
 	text-transform:none;
 	text-decoration:none;
 }
+
+
 /* Image desalinhada para dar estilo.
 
 
@@ -280,6 +282,45 @@ nav {
 .btn_buy:hover{
 	background-color:#7cd0e0;
 	color:#fff;
+}
+
+.inter {
+	display:flex;
+	flex-direction:column;
+	width:100%;
+	background-color:black;
+	border-bottom:25px solid black;
+	align-items:center;
+	margin-top:20px;
+	color:#fff;
+
+}
+.campo_interesse {
+
+
+	
+
+	width:100%;
+	height:300px;
+}
+.campo_interesse div {
+	width:100%;
+	height:100%;
+}
+
+.before_footer {
+
+	width:100%;
+	height:300px;
+	background-color:#000;
+	border:4px solid #000;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+.before_footer img {
+	width:95%;
+	height:95%;
 }
 
 /* Login e Registro Form(login.php)*/
@@ -368,6 +409,8 @@ nav {
 
 	color:#edf7f7;
 }
+
+
 
 
 
