@@ -25,7 +25,7 @@
 			Senha:<br/>
 			<input class="form-control" type="password" name="password" /><br/>
 
-			<input class="form-control btn btn-outline-dark" type="submit" value="Logar"/>
+			<input class="form-control btn btn_logar" type="submit" value="Entrar"/>
 			
 			
 		</form><br/>

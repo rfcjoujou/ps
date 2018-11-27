@@ -158,7 +158,8 @@ nav {
 }
 /* Menu do footer principal Aplicação de cor*/
 #footerint {
-	background-image: linear-gradient(to left, #0f0e0e, #0e0909);
+	background-image: linear-gradient(to left, #141313, #161414);
+	color: #212529;
 
 }
 
@@ -388,6 +389,46 @@ nav {
 .botao_user {
 	width:49%;
 	padding-left:12px;
+
+
+}
+.btn_register {
+	background: #212529;
+    border: 0;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 100;
+    letter-spacing: 0.5pt;
+    
+    
+    text-align: center;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    
+
+    -moz-box-shadow: 2px 3px 0px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 2px 3px 0px rgba(0,0,0,0.2);
+    box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+}
+.btn_logar {
+	
+    background: #212529;
+    border: 0;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 100;
+    letter-spacing: 1.2pt;
+    
+    
+    text-align: center;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    
+
+    -moz-box-shadow: 2px 3px 0px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 2px 3px 0px rgba(0,0,0,0.2);
+    box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+
 }
 
 /* View account.php*/
@@ -443,7 +484,116 @@ nav {
 	color:#edf7f7;
 }
 
+/* Pagina dos product_item(view) */
+.price_from {
+	text-decoration: line-through;
+	font-size: 14px;
+}
 
+.addtocartfrom {
+	margin-top:20px;
+
+}
+.addtocart_qt {
+	height:35px;
+	width:40px;
+	text-align:center;
+	border:1px solid #CCC;
+	outline:0;
+	float:left;
+}
+.addtocartfrom button {
+	height:35px;
+	text-align:center;
+	border:1px solid #CCC;
+	width:30px;
+	background-color:#fff;
+	font-weight:bold;
+	float:left;
+}
+
+.addtocart_submit {
+	width:80%;
+	margin-left:30px;
+	margin-right:20px;
+	margin-top:8px;
+	height:35px;
+    color: #85c4d0;
+    background-color: transparent;
+    background-image: none;
+    border-color: #85c4d0;
+}
+.addtocart_submit:hover{
+	background-color:#7cd0e0;
+	color:#fff;
+}
+.mainphoto {
+	margin-top:50px;
+}
+.setas_prev,
+.setas_next {
+	width:20px;
+	height:472px;
+	display:flex;
+	position:relative;
+
+	align-items:center;
+   	justify-content:center;
+   	margin-top:50px;
+}
+.setas_prev {
+
+	float:left;
+   	
+
+}
+.setas_next {
+	float:right;
+
+}
+
+
+.seta-prev {
+	width: 23px;
+    height: 45px;
+    background: url(../images/prod_slider/prev.png) center center;
+    float:left;	
+
+}
+.seta-next {
+    width: 23px;
+    height: 45px;
+    background: url(../images/prod_slider/next.png) center center;
+    float: right;
+
+}
+.mainphoto {
+	display:flex;
+	justify-content:center;
+}
+.mainphoto img {
+	width:90%;
+
+	height:470px;
+}
+.photo_item {
+	width:25%;
+	height:60px;
+	float:left;
+	text-align:center;
+	margin-top:10px;
+	cursor:pointer;
+}
+.photo_item img {
+
+	width:90%;
+	height:100%;
+}
+
+/*Lancamento.php (view)*/
+.sidebar {
+	margin-top:30px;
+}
 
 
 

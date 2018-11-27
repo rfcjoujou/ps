@@ -53,11 +53,11 @@
 
 
 							<ul >
-								<li><a class="btn" href="">Lançamento</a></li>
-								<li><a class="btn " href="">Calça</a></li>
-								<li><a class="btn " href="">Shorts</a></li>
-								<li><a class="btn" href="">Promoções</a></li>
-								<li><a class="btn" href="">Quem Somos</a></li>
+								<li><a class="btn" href="<?php echo BASE_URL; ?>lancamento">Lançamento</a></li>
+								<li><a class="btn " href="<?php echo BASE_URL; ?>calca">Calça</a></li>
+								<li><a class="btn " href="<?php echo BASE_URL; ?>shorts">Shorts</a></li>
+								<li><a class="btn" href="<?php echo BASE_URL; ?>promocoes">Promoções</a></li>
+								<li><a class="btn" href="<?php echo BASE_URL; ?>quem-somos">Quem Somos</a></li>
 							</ul>
 
 					</div>

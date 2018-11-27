@@ -78,7 +78,7 @@
 			}
 
 			?>
-	<?php endforeach ?>
+	<?php endforeach; ?>
 
 	</div>
 	<div class="row" style="background-color:#000;">

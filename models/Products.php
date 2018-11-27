@@ -1,9 +1,17 @@
 <?php
 class Products extends model
 {
-	public function getProducts($limite = 0) {
+	public function getProducts($limite = 0, $filters = array()) {
 		$array = array();
-		
+
+
+
+		if(!empty($filters['category'])) {
+				
+			$filters['category'] = $filters['category'];
+		}
+
+		$where = $this->buildWhere($filters);
 
 		if(!empty($limite)) {
 			$limite = "LIMIT ".$limite;
@@ -13,8 +21,11 @@ class Products extends model
 
 		$sql = "SELECT *, 
 		( select categories.name from categories where categories.id = products.id_category ) as category_name
-		FROM products ".$limite;
-		$sql = $this->db->query($sql);
+		FROM products WHERE ".implode(' AND ', $where)."
+		".$limite;
+		$sql = $this->db->prepare($sql);
+		$this->bindWhere($filters, $sql);
+		$sql->execute();
 
 		if($sql->rowCount() > 0) {
 			$array = $sql->fetchAll();
@@ -63,7 +74,7 @@ class Products extends model
 			$options = $sql->fetch();
 			$options = $options['options'];
 
-
+			//1
 			if(!empty($options)) {
 				$sql = "SELECT * FROM options WHERE id IN (".$options.")";
 				$sql = $this->db->query($sql);
@@ -86,6 +97,8 @@ class Products extends model
 			foreach($options as $ok => $op) {
 				if(isset($options_values[$op['id']])) {
 					$options[$ok]['value'] = $options_values[$op['id']];
+
+
 				} else {
 					$options[$ok]['value'] = '';
 				}
@@ -94,5 +107,44 @@ class Products extends model
 		}
 
 		return $options;
+	}
+
+	private function buildWhere($filters) {
+		$where = array(
+			'1=1'
+			);
+
+
+
+		if(!empty($filters['category'])) {
+
+			$where[] = 'id_category = :id_category';
+		}
+
+		if(!empty($filters['sale'])) {
+			$where[] = 'sale = :sale';
+		}
+
+		if(!empty($filters['new_product'])) {
+			$where[] = 'new_product = :new_product';
+		}
+
+		return $where;
+
+	}
+
+	private function bindWhere($filters, &$sql) {
+		
+		if(!empty($filters['category'])) {
+			$sql->bindValue(":id_category", $filters['category']);
+		}
+
+		if(!empty($filters['sale'])) {
+			$sql->bindValue(':sale', $filters['sale']);
+		}
+
+		if(!empty($filters['new_product'])) {
+			$sql->bindValue(':new_product', $filters['new_product']);
+		}
 	}
 }
