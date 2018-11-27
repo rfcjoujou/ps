@@ -1,3 +1,4 @@
+	
 	<div class="row">
 		<div class="col-sm">
 			<div id="ex" class="slide carousel">
@@ -9,25 +10,27 @@
 				</ol>
 				<div class="carousel-inner">
 					<div  class="carousel-item active">
-						<img src="<?php BASE_URL; ?>assets/images/1.jpg" class="w-100" />
+						<img src="<?php BASE_URL; ?>assets/images/prod/1.jpg" class="w-100" />
 					</div>
 					<div class="carousel-item">
-						<img src="<?php BASE_URL; ?>assets/images/4.jpg" class="w-100" />
+						<img src="<?php BASE_URL; ?>assets/images/prod/4.jpg" class="w-100" />
 					</div>
 					<div class="carousel-item">
-						<img src="<?php BASE_URL; ?>assets/images/5.jpeg" class="w-100" />
+						<img src="<?php BASE_URL; ?>assets/images/prod/5.jpeg" class="w-100" />
 					</div>
 				</div>
+				<div class="carousel_before">
+					<a href="#ex" data-slide="prev" class="carousel-control-prev">
+						<span class="carousel-control-prev-icon"></span>
 
-				<a href="#ex" data-slide="next" class="carousel-control-next">
-					<span class="carousel-control-next-icon"></span>
+					</a>
+				</div>
+				<div class="carousel_after">
+					<a href="#ex" data-slide="next" class="carousel-control-next">
+						<span class="carousel-control-next-icon"></span>
 
-				</a>
-
-				<a href="#ex" data-slide="next" class="carousel-control-next">
-					<span class="carousel-control-next-icon"></span>
-
-				</a>
+					</a>
+				</div>
 
 
 
@@ -139,23 +142,31 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="row" style="margin-top:40px;background-color:#000;border:4px solid #000;">
+	
+	<div class="row before_footer_row">
 		<div class="col-sm">
 
-			<div class="before_footer">
-				<a href="" style="width:100%;height:100%;">
-					<img class="img-fluid img-thumbnail" src="<?php echo BASE_URL; ?>assets/images/3.jpg ?>" />
-				</a>
+			<div class="container_before_footer">	
+				<div class="before_footer">
+					<a href="<?php echo BASE_URL; ?>products/open/<?php echo $products['id']; ?>" style="width:100%;height:100%;">
+						<img class="img-fluid img-thumbnail" src="<?php echo BASE_URL; ?>assets/images/prod/3.jpg ?>" />
+	<!-- Aqui tem um bug pois eu bnão estou pegando a image pelo id, vamos resolver depois -->
+					</a>
+				</div>
 			</div>
+
 		</div>
 		<div class="col-sm">
-
-			<div class="before_footer">
-				<a href="" style="width:100%;height:100%;">
-					<img class="img-fluid img-thumbnail" src="<?php echo BASE_URL; ?>assets/images/2.jpg ?>" />
-				</a>
+<!-- Aqui tem um bug pois eu bnão estou pegando a image pelo id, vamos resolver depois -->
+			
+			<div class="container_before_footer">
+				<div class="before_footer">
+					<a href="<?php echo BASE_URL; ?>products/open/<?php echo $products['id']; ?>" style="width:100%;height:100%;">
+						<img class="img-fluid img-thumbnail" src="<?php echo BASE_URL; ?>assets/images/prod/2.jpg ?>" />
+					</a>
+				</div>
 			</div>
+			
 		</div>
 	</div>
 </div>
