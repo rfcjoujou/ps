@@ -33,4 +33,66 @@ class Products extends model
 
 		return $array;
 	}
+
+	public function getInfoProducts($id) {
+		$array = array();
+
+		$sql = "SELECT * FROM products WHERE id = :id";
+		$sql = $this->db->prepare($sql);
+		$sql->bindValue(":id", $id);
+		$sql->execute();
+
+		if($sql->rowCount() > 0) {
+			
+			$array = $sql->fetch();
+		}
+
+		return $array;
+
+	}
+
+	public function getOptionsById($id) {
+		$options = array();
+
+		$sql = "SELECT options FROM products WHERE id = :id";
+		$sql = $this->db->prepare($sql);
+		$sql->bindValue(":id", $id);
+		$sql->execute();
+
+		if($sql->rowCount() > 0) {
+			$options = $sql->fetch();
+			$options = $options['options'];
+
+
+			if(!empty($options)) {
+				$sql = "SELECT * FROM options WHERE id IN (".$options.")";
+				$sql = $this->db->query($sql);
+
+				$options = $sql->fetchAll();
+			}
+
+			$sql  = "SELECT * FROM products_options WHERE id_product = :id";
+			$sql = $this->db->prepare($sql);
+			$sql->bindValue(":id", $id);
+			$sql->execute();
+			$options_values = array();
+
+			if($sql->rowCount() > 0) {
+				foreach($sql->fetchAll() as $op) {
+					$options_values[$op['id_option']] = $op['p_value'];
+				}
+			}
+
+			foreach($options as $ok => $op) {
+				if(isset($options_values[$op['id']])) {
+					$options[$ok]['value'] = $options_values[$op['id']];
+				} else {
+					$options[$ok]['value'] = '';
+				}
+			}
+
+		}
+
+		return $options;
+	}
 }
