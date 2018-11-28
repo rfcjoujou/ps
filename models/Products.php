@@ -74,7 +74,7 @@ class Products extends model
 			$options = $sql->fetch();
 			$options = $options['options'];
 
-			//1
+
 			if(!empty($options)) {
 				$sql = "SELECT * FROM options WHERE id IN (".$options.")";
 				$sql = $this->db->query($sql);
@@ -109,11 +109,139 @@ class Products extends model
 		return $options;
 	}
 
+	public function getAvailableOptions($filters_caract = array(), $category = 0, $especif = array()) {
+		$groups = array();
+		$ids = array();
+
+
+
+
+		if(!empty($category)) {
+
+			$filters = array(
+				'caract' => $category
+				);
+			
+		}
+
+		if(!empty($filter_caract)) {
+			$filters = array(
+				'filters_caract' => $filters_caract
+			);
+			
+		}
+
+		if(!empty($especif['new_product'])) {
+			$filters = array(
+				'new_product' => $especif['new_product']
+
+				);
+		}
+
+		if(!empty($especif['sale'])) {
+
+			$filters = array(
+				'sale' => $especif['sale']
+			);
+		}
+
+
+		$where = $this->buildWhere($filters);
+
+
+		$sql = "SELECT 
+		id,options
+		FROM products
+		WHERE ".implode(' AND ', $where);
+		$sql = $this->db->prepare($sql);
+
+		$this->bindWhere($filters, $sql);
+		$sql->execute();
+
+
+		if($sql->rowCount() > 0) {
+			foreach($sql->fetchAll() as $product) {
+				$ops = explode(',', $product['options']);
+				$ids[] = $product['id'];
+
+				foreach($ops as $op) {
+					if(!in_array($op, $groups)) {
+						$groups[] = $op;
+					}
+				}
+			}
+
+		}
+
+		$options = $this->getAvailableValuesFromOptions($groups, $ids);
+
+		return $options;
+
+	}
+
+	public function getAvailableValuesFromOptions($groups, $ids) {
+		$array = array();
+		$options = new Options();
+		foreach($groups as $op) {
+			$array[$op] = array(
+				'name' => $options->getName($op),
+				'options' => array()
+			);
+		}
+
+
+
+		$sql = "SELECT
+		p_value,
+		id_option,
+		COUNT(id_option) as c
+		FROM products_options
+		WHERE
+		id_option IN ('".implode("','", $groups)."') AND
+		id_product IN ('".implode("','", $ids)."')
+		GROUP BY p_value ORDER BY p_value";
+
+		$sql = $this->db->query($sql);
+		
+		if($sql->rowCount() > 0) {
+			
+
+
+			foreach($sql->fetchAll() as $ops) {
+
+
+				$array[$ops['id_option']]['options'][] = array(
+					
+					'value'=>$ops['p_value'],
+					'id' => $ops['id_option'],
+					'count'=>$ops['c']
+				);
+
+			}
+
+
+		}
+
+
+		return $array;
+	}
+
+
 	private function buildWhere($filters) {
 		$where = array(
 			'1=1'
 			);
 
+
+		if(!empty($filters['filters_caract'])) {
+
+			$where[] = 'options = :filter_value';
+
+		}
+
+		if(!empty($filters['caract'])) {
+			$where[] = 'id_category = :id_category';
+		}
 
 
 		if(!empty($filters['category'])) {
@@ -123,6 +251,7 @@ class Products extends model
 
 		if(!empty($filters['sale'])) {
 			$where[] = 'sale = :sale';
+
 		}
 
 		if(!empty($filters['new_product'])) {
@@ -135,6 +264,17 @@ class Products extends model
 
 	private function bindWhere($filters, &$sql) {
 		
+		if(!empty($filters['filters_caract'])) {
+			$sql->bindValue(':filter_value', $filters_caract);
+
+		}
+
+		if(!empty($filters['caract'])) {
+			$sql->bindValue(":id_category", $filters['caract']);
+		}
+
+
+
 		if(!empty($filters['category'])) {
 			$sql->bindValue(":id_category", $filters['category']);
 		}

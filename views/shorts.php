@@ -1,8 +1,9 @@
 <div class="row">
 	<div class="col-sm-3">
 		<div class="sidebar">
-			<h5>Filtro</h5>
-			<hr style="background-color:black;" />
+
+			<?php $this->loadView('sidebar', array('filters' => $filters)); ?>
+
 		</div>
 	</div>
 	

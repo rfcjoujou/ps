@@ -77,7 +77,7 @@
 		<section>
 			<?php if($viewName == 'home'): ?>
 					
-			<div class="container-fluid" style="padding:0;">		
+			<div class="container-fluid" style="padding:0px;width:1348px;margin:0px;">		
 					<?php $this->loadViewInTemplate($viewName, $viewData); ?>
 			</div>
 			<?php else :?>

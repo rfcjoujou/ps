@@ -4,13 +4,21 @@ class shortsController extends Controller
 	public function index() {
 		$dados = array();
 		$products = new Products();
-		$category = array('category' => '1');
+		$f = new Filters();
 
-		$product = $products->getProducts(0, $category);
+		$id_category = array('category' => '1');
+		/* Filtro de caracteristica dos produtos */
+		$filters_caract = array();
+
+		$product = $products->getProducts(0, $id_category);
+
+
 
 		if(!empty($product)) {
 			$dados['products'] = $product;
+			$dados['filters'] = $f->getFilters($filters_caract, $id_category['category'], $especif = array());
 
+			
 
 		}
 

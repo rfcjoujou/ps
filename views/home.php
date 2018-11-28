@@ -1,6 +1,6 @@
 	
-	<div class="row">
-		<div class="col-sm">
+	<div class="row" style="width:100%;margin:0px;">
+		<div class="col-sm-12" style="padding:0px;">
 			<div id="ex" class="slide carousel">
 				<ol class="carousel-indicators">
 					<li data-target="#exemplo" data-slide-to="0" class="active"></li>
@@ -10,13 +10,13 @@
 				</ol>
 				<div class="carousel-inner">
 					<div  class="carousel-item active">
-						<img src="<?php BASE_URL; ?>assets/images/prod/1.jpg" class="w-100" />
+						<img src="<?php echo BASE_URL; ?>assets/images/prod/1.jpg" class="w-100" />
 					</div>
 					<div class="carousel-item">
-						<img src="<?php BASE_URL; ?>assets/images/prod/4.jpg" class="w-100" />
+						<img src="<?php echo BASE_URL; ?>assets/images/prod/4.jpg" class="w-100" />
 					</div>
 					<div class="carousel-item">
-						<img src="<?php BASE_URL; ?>assets/images/prod/5.jpeg" class="w-100" />
+						<img src="<?php echo BASE_URL; ?>assets/images/prod/5.jpeg" class="w-100" />
 					</div>
 				</div>
 				<div class="carousel_before">
@@ -38,6 +38,7 @@
 		</div>
 	</div>
 </div>
+
 <div class="container">
 	<div class="row" style="margin-left:0px;">
 		<div class="col-sm">

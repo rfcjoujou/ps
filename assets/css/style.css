@@ -11,6 +11,10 @@ header {
 	margin-top:3px;
 
 }
+/*html {
+  position: relative;
+  min-height: 100%;
+} */
 
 .logoint {
 	height:50px;
@@ -204,13 +208,14 @@ nav {
 /* Home.php (view)*/
 
 .carousel-item {
-	background-color:red;
+
 	width:100%;
 } 
 
 .carousel-item img {
 	height:600px;
 	width:100%;
+
 }
 .carousel-control-prev-icon {
 
@@ -592,10 +597,22 @@ nav {
 
 /*Lancamento.php (view)*/
 .sidebar {
-	margin-top:30px;
+	margin-top:50px;
 }
+/* Filtro(siderbar.php) [view]) */
 
-
+.filteritem {
+	padding-top:2px;
+	padding-left:2px;
+	height:25px;
+	font-size:15px;
+}
+.filtercontent {
+	margin-top:-7px;
+	border:2px solid #161414;
+	padding-left:6px;
+	padding-right:6px;
+}
 
 
 
