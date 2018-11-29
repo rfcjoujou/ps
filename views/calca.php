@@ -3,11 +3,12 @@
 		<div class="sidebar">
 		
 
-			<?php $this->loadView('sidebar', array('filters' => $filters)); ?>
+			<?php $this->loadView('sidebar', array('filters' => $filters, 'filters_selected' => $filters_selected)); ?>
 
 		</div>
 	</div>
-	
+		
+
 
 
 	<?php 

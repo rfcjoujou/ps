@@ -1,13 +1,18 @@
 <?php
 class Products extends model
 {
-	public function getProducts($limite = 0, $filters = array()) {
+	public function getProducts($limite = 0, $filters = array(), $filters_caract = array()) {
 		$array = array();
 
 
+		if(!empty($filters_caract)) {
+
+			$filters['options'] = $filters_caract['options'];
+		}
+		
 
 		if(!empty($filters['category'])) {
-				
+
 			$filters['category'] = $filters['category'];
 		}
 
@@ -116,6 +121,8 @@ class Products extends model
 
 
 
+	
+
 		if(!empty($category)) {
 
 			$filters = array(
@@ -124,10 +131,18 @@ class Products extends model
 			
 		}
 
-		if(!empty($filter_caract)) {
-			$filters = array(
-				'filters_caract' => $filters_caract
-			);
+			/* Valores do filtro */
+		if(!empty($filters_caract)) {
+			
+
+			foreach($filters_caract as $value_filter => $value_key) {
+				
+				$filters = array(
+
+					'filters_caract' => $value_key
+
+					);
+			}
 			
 		}
 
@@ -139,7 +154,6 @@ class Products extends model
 		}
 
 		if(!empty($especif['sale'])) {
-
 			$filters = array(
 				'sale' => $especif['sale']
 			);
@@ -156,6 +170,8 @@ class Products extends model
 		$sql = $this->db->prepare($sql);
 
 		$this->bindWhere($filters, $sql);
+
+		
 		$sql->execute();
 
 
@@ -169,6 +185,7 @@ class Products extends model
 						$groups[] = $op;
 					}
 				}
+
 			}
 
 		}
@@ -191,16 +208,20 @@ class Products extends model
 
 
 
+
+
 		$sql = "SELECT
 		p_value,
 		id_option,
 		COUNT(id_option) as c
 		FROM products_options
-		WHERE
+		WHERE 
 		id_option IN ('".implode("','", $groups)."') AND
 		id_product IN ('".implode("','", $ids)."')
 		GROUP BY p_value ORDER BY p_value";
 
+		
+		
 		$sql = $this->db->query($sql);
 		
 		if($sql->rowCount() > 0) {
@@ -217,7 +238,11 @@ class Products extends model
 					'count'=>$ops['c']
 				);
 
+
+
 			}
+
+
 
 
 		}
@@ -233,9 +258,10 @@ class Products extends model
 			);
 
 
+		
 		if(!empty($filters['filters_caract'])) {
 
-			$where[] = 'options = :filter_value';
+			$where[] = "id IN (select id_product from products_options where products_options.p_value IN ('".implode("','", $filters['filters_caract'])."'))";
 
 		}
 
@@ -258,16 +284,24 @@ class Products extends model
 			$where[] = 'new_product = :new_product';
 		}
 
+		if(!empty($filters['options'])) {
+			
+			$where[] = "id IN (select id_product from products_options where products_options.p_value IN ('".implode("','", $filters['options'])."'))";
+		}
+
 		return $where;
 
 	}
 
 	private function bindWhere($filters, &$sql) {
 		
-		if(!empty($filters['filters_caract'])) {
-			$sql->bindValue(':filter_value', $filters_caract);
-
+		if(!empty($filters['p_value'])) {
+			$sql->bindValue(':p_value', $filters['p_value']);
 		}
+
+
+
+
 
 		if(!empty($filters['caract'])) {
 			$sql->bindValue(":id_category", $filters['caract']);

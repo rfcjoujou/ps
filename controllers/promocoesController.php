@@ -10,10 +10,20 @@ class promocoesController extends Controller
 		$products = new Products();
 		$f = new Filters();
 
+
+		if(!empty($_GET['filter']) && is_array($_GET['filter'])) {
+			
+			
+			$filters_caract = $_GET['filter'];
+
+
+		}
+
+		$dados['filters_selected'] = $filters_caract;
 		
 
 
-		$product = $products->getProducts(0, $sale);
+		$product = $products->getProducts(0, $sale, $filters_caract);
 
 		if(!empty($product)) {
 			$especif = $sale;

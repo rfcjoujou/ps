@@ -10,8 +10,18 @@ class calcaController extends Controller
 		$products = new Products();
 		$f = new Filters();
 		
+		if(!empty($_GET['filter']) && is_array($_GET['filter'])) {
+			
+			
+			$filters_caract = $_GET['filter'];
 
-		$product = $products->getProducts(0, $id_category);
+
+		}
+
+		$dados['filters_selected'] = $filters_caract;
+		
+
+		$product = $products->getProducts(0, $id_category, $filters_caract);
 
 		if(!empty($product)) {
 			$dados['products'] = $product;

@@ -81,5 +81,11 @@ $(function(){
 
 	}); */
 
+	$('.filterarea').find('input').on('change', function() {
+		$('.filterarea form').submit();
+
+		
+	});
+
 
 });
