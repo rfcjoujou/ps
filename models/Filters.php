@@ -1,24 +1,35 @@
 <?php 
 class Filters extends Model 
 {
-	public function getFilters($filters, $category = 0, $especif, $p_value = 0) {
+	public function getFilters($filters, $especif) {
 
-		
-		
+
+
+
+		if(!empty($filters['options']['options'])) {
+
+			$filters['options'] = $filters['options']['options'];
+		} 
+			
+
+
 
 		$products = new Products();
 
 		$array = array(
 			'options' => array(),
-			'especif' => array(),
+			'especif' => array()
 
 
 			);
-
-		// fILTRO das caracterisiticas.
 		
 
-		$array['options'] = $products->getAvailableOptions($filters, $category, $especif);
+		// fILTRO das caracterisiticas.
+
+
+
+
+		$array['options'] = $products->getAvailableOptions($filters, $especif);
 
 		return $array;
 	}

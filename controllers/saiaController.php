@@ -1,12 +1,12 @@
 <?php 
-class calcaController extends Controller
+class saiaController extends Controller
 {
 	public function index() {
 		$dados = array();
 		$products = new Products();
 		$f = new Filters();
 
-		$filters['caract'] = 2;
+		$filters['caract'] = 8;
 		/* Filtro de caracteristica dos produtos */
 		$filters_caract = array();
 
@@ -41,6 +41,6 @@ class calcaController extends Controller
 		}
 
 
-		$this->loadTemplate('calca', $dados);
+		$this->loadTemplate('saia', $dados);
 	}
 }

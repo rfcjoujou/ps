@@ -17,29 +17,32 @@
 <?php endif; ?> -->
 
 
-	
 
 <div class="filterarea">
 	<form method="GET">
 
 			<aside>
 				<div class="filtercontent">
-					<?php foreach($viewData['filters']['options'] as $option): ?>
-						<strong value="<?php echo $option['name']; ?><?php $option['id']; ?>"><?php echo $option['name']; ?></strong><br/>
-						<?php foreach($option['options'] as $op): ?>
 
-							<div class="filteritem">
-								<input type="checkbox"  <?php echo (isset($viewData['filters_selected']['options']) && in_array($op['value'], $viewData['filters_selected']['options']))?'checked="checked"':''; ?> name="filter[options][]"   id="filter_option<?php echo $op['id']; ?>"  value="<?php echo $op['value']; ?>"/> 
-								
-								<label for="filter_options<?php echo $op['id']; ?>"><?php echo $op['value']; ?></label>
-								<span style="float:right">(<?php echo $op['count']; ?>)</span>
-							</div>	
-						<?php endforeach; ?>
+						<?php foreach($viewData['filters']['options'] as $option): ?>
+							<strong><?php echo $option['name']; ?></strong><br/>
+							<?php foreach($option['options'] as $op): ?>
 
-						<br/>
+								<div class="filteritem">
+									
+									<a href="" style="color:#000;text-decoration:none;" id="filter_options<?php echo $op['id']; ?>">
+										<input type="checkbox" <?php echo (isset($viewData['filters_selected']['options']) && in_array($op['value'], $viewData['filters_selected']['options']))?'checked="checked"':''; ?> name="filter[options][]"   id="filter_option<?php echo $op['id']; ?>"  value="<?php echo $op['value']; ?>"/> 
+										
+										<label for="filter_options<?php echo $op['id']; ?>"><?php echo $op['value']; ?></label>
+										<span style="float:right">(<?php echo $op['count']; ?>)</span>
+									</a>	
+								</div>	
+							<?php endforeach; ?>
+
+							<br/>
 
 
-					<?php endforeach; ?>
+						<?php endforeach; ?>										
 				</div>
 			</aside>
 

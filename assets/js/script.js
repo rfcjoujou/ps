@@ -87,5 +87,17 @@ $(function(){
 		
 	});
 
+	$('.filter_item a').on('click', function(e) {
+		e.preventDefault();
+		var value_Id = $(this).val('id');
+		
+		$('.filter_item').find("input[id=value_Id]").attr('checked', true);
+
+		
+
+		
+
+	});
+
 
 });

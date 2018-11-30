@@ -88,57 +88,28 @@
 				<h5 >Seu interesse</h5>
 				<div class="campo_interesse">
 
-					<!--  Queria fazer um slide show de divs como dos site de loja
-					virtuais.
 
-					<div id="ex2" class="slide carousel">
-						<ol class="carousel-indicators">
-							<li data-target="#exemplo" data-slide-to="0" class="active"></li>
-							<li data-target="#exemplo" data-slide-to="1"></li>
-							<li data-target="#exemplo" data-slide-to="2"></li>
-							
-						</ol>
-						<div class="carousel-inner">
-							<a href="" >
-								<div class="se">
-									
-										<img src="<?php echo BASE_URL; ?>assets/images/1.jpg" class="w-100" />
-								
-								</div>
-							</a>
-							<a href="" >
-								<div class="se">
-
-										<img src="<?php echo BASE_URL; ?>assets/images/4.jpg" class="w-100" />
-										
-						
-								</div>
-							</a>
-							<a href="" >
-								<div class="se">
-									
-										<img src="<?php echo BASE_URL; ?>assets/images/3.jpg ?>" class="w-100" />
-										
-
-								</div>	
-							</a>	
+					<div class="wmuSlider example3">
+				        
+				        <div class="wmuSliderWrapper">
+				        	<?php foreach($products as $product): ?>
+				            <article>
+				            	<a href="<?php echo BASE_URL ?>products/open/<?php echo $product['id']; ?>" style="text-decoration:none;float:buttom;">
+				                <img src="<?php echo BASE_URL ?>assets/images/prod/<?php echo $product['images']['url'] ?>" /><br/>
+				                </a>
+				                <a href="<?php echo BASE_URL ?>products/open/<?php echo $product['id']; ?>" style="text-decoration:none;float:buttom;">Compra</a>
+				            </article>
+				    		<?php endforeach; ?>
+				           
+				        </div>
+				                        
+				    <!-- END .wmuSlider -->
+				    <a class="wmuSliderPrev">Previous</a>
+				    <a class="wmuSliderNext">Next</a>
+				    <ul class="wmuSliderPagination"><li><a href="#" class="wmuActive">0</a></li><li><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li></ul>
+				    </div>
 
 
-						</div>
-
-						<a href="#ex2" data-slide="next" class="carousel-control-next">
-							<span class="carousel-control-next-icon"></span>
-
-						</a>
-
-						<a href="#ex2" data-slide="next" class="carousel-control-next">
-							<span class="carousel-control-next-icon"></span>
-
-						</a>
-
-
-
-					</div>  -->
 				</div>
 			</div>
 		</div>
@@ -149,9 +120,10 @@
 
 			<div class="container_before_footer">	
 				<div class="before_footer">
-					<a href="<?php echo BASE_URL; ?>products/open/<?php echo $products['id']; ?>" style="width:100%;height:100%;">
+					<a href="<?php echo BASE_URL; ?>" style="width:100%;height:100%;">
 						<img class="img-fluid img-thumbnail" src="<?php echo BASE_URL; ?>assets/images/prod/3.jpg ?>" />
 	<!-- Aqui tem um bug pois eu bnão estou pegando a image pelo id, vamos resolver depois -->
+						<h2 style="color:#fff;position:absolute;margin-top:-40px;margin-left:160px;">Vestido</h2>
 					</a>
 				</div>
 			</div>
@@ -162,8 +134,10 @@
 			
 			<div class="container_before_footer">
 				<div class="before_footer">
-					<a href="<?php echo BASE_URL; ?>products/open/<?php echo $products['id']; ?>" style="width:100%;height:100%;">
+					<a style="text-decoration:none;" href="<?php echo BASE_URL; ?>lancamento" style="width:100%;height:100%;">
+						
 						<img class="img-fluid img-thumbnail" src="<?php echo BASE_URL; ?>assets/images/prod/2.jpg ?>" />
+						<h2 style="color:#fff;position:absolute;margin-top:-40px;margin-left:160px;">Nova estação</h2>
 					</a>
 				</div>
 			</div>
@@ -171,3 +145,4 @@
 		</div>
 	</div>
 </div>
+<?php print_r($products); ?>

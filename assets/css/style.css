@@ -123,6 +123,20 @@ nav {
 }
 
 
+.list_menu li a:hover {
+	margin-top:-5px;
+	height:36px;
+	background-image: linear-gradient(to left, #232020, #161414);
+	border:2px solid linear-gradient(to left, #232020, #161414);
+
+}
+.list_menu li a:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+
+
 
 .filtro {
 	
@@ -597,7 +611,7 @@ nav {
 
 /*Lancamento.php (view)*/
 .sidebar {
-	margin-top:50px;
+	margin-top:35px;
 }
 /* Filtro(siderbar.php) [view]) */
 
@@ -613,7 +627,5 @@ nav {
 	padding-left:6px;
 	padding-right:6px;
 }
-
-
 
 

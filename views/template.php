@@ -8,7 +8,7 @@
 
 		<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css" />
-
+		<link rel="stylesheet" href="assets/css/demo.css" type="text/css" media="screen" />
 		<!-- Jquery/ javascript -->
 		
 
@@ -36,7 +36,7 @@
 					</div>
 					<div class="col-sm-2">
 						<div class="icones">
-							<a href="<?php echo BASE_URL; ?>"> <img height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/heart.png" /></a>
+							<a href="<?php echo BASE_URL; ?>" > <img height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/heart.png" /></a>
 							<a href="<?php echo BASE_URL; ?>"> <img height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/bag.png" /></a>
 							<a href="<?php echo BASE_URL; ?>login" ><img  onmove="touch_item()" height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/user.png" /></a>
 						</div>
@@ -53,11 +53,14 @@
 
 
 							<ul >
-								<li><a class="btn" href="<?php echo BASE_URL; ?>lancamento">Lançamento</a></li>
-								<li><a class="btn " href="<?php echo BASE_URL; ?>calca">Calça</a></li>
-								<li><a class="btn " href="<?php echo BASE_URL; ?>shorts">Shorts</a></li>
-								<li><a class="btn" href="<?php echo BASE_URL; ?>promocoes">Promoções</a></li>
-								<li><a class="btn" href="<?php echo BASE_URL; ?>quem-somos">Quem Somos</a></li>
+								
+								<li><a class="btn " href="<?php echo BASE_URL; ?>calca" >Calça</a></li>
+								<li><a class="btn " href="<?php echo BASE_URL; ?>shorts"  >Shorts</a></li>
+								<li><a class="btn" href="<?php echo BASE_URL; ?>blusas"  >Blusas</a></li>
+								<li><a class="btn" href="<?php echo BASE_URL; ?>saia"  >Saia</a></li>
+								<li><a class="btn " href="<?php echo BASE_URL; ?>promocoes" >Promoções</a></li>
+								<li><a class="btn " href="<?php echo BASE_URL; ?>lancamento" >Lançamento</a></li>
+								<li><a class="btn" href="<?php echo BASE_URL; ?>quem-somos"  >Quem Somos</a></li>
 							</ul>
 
 					</div>
@@ -227,9 +230,25 @@
 		</footer>		
 
 		<!-- Jquery/ javascript -->
+		<script type="text/javascript" src="assets/js/modernizr.custom.min.js"></script>    
 		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.min.js"></script>
 		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.bundle.min.js"></script> 
 		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/jquery.wmuSlider.js"></script>
+		<script src="assets/jsjquery.wmuGallery.js"></script>
+		<script>
+		       
+		         
+
+		        
+		    $('.example3').wmuSlider({
+		           touch: Modernizr.touch,
+		           animation: 'slide',
+		           items: 2
+		    });
+		</script>
+
+
 		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/script.js"></script>
 
 	</body>

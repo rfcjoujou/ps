@@ -1,29 +1,15 @@
-
-
 <div class="row">
-	<?php if(!empty($filters) OR !empty($filters_selected)): ?> 
 	<div class="col-sm-3">
-
-
-
 		<div class="sidebar">
+		
 
 			<?php $this->loadView('sidebar', array('filters' => $filters, 'filters_selected' => $filters_selected)); ?>
 
 		</div>
-		
-		
-		
+	</div>
 		
 
-		
 
-	</div>
-	<?php else: ?>
-	<div class="col-sm" style="text-align:center;">
-		<div class="alert alert-warning" style="max-width:600px;margin:auto;margin-top:20px;">Não há produtos em Promoção hoje</div>
-	</div>
-	<?php endif; ?>
 
 	<?php 
 	$a = 0;

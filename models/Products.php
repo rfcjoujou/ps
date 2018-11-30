@@ -5,16 +5,18 @@ class Products extends model
 		$array = array();
 
 
-		if(!empty($filters_caract)) {
+		/*if(!empty($especif['sale'])) {
+			$filters['sale'] = $especif['sale'];
+		} */
+
+		if(!empty($filters_caract['options'])) {
 
 			$filters['options'] = $filters_caract['options'];
 		}
 		
 
-		if(!empty($filters['category'])) {
 
-			$filters['category'] = $filters['category'];
-		}
+
 
 		$where = $this->buildWhere($filters);
 
@@ -26,11 +28,13 @@ class Products extends model
 
 		$sql = "SELECT *, 
 		( select categories.name from categories where categories.id = products.id_category ) as category_name
-		FROM products WHERE ".implode(' AND ', $where)."
+		FROM products WHERE ".implode(' AND ', $where)." 
 		".$limite;
+
 		$sql = $this->db->prepare($sql);
-		$this->bindWhere($filters, $sql);
+		$this->bindWhere($filters,$sql);
 		$sql->execute();
+		
 
 		if($sql->rowCount() > 0) {
 			$array = $sql->fetchAll();
@@ -114,37 +118,14 @@ class Products extends model
 		return $options;
 	}
 
-	public function getAvailableOptions($filters_caract = array(), $category = 0, $especif = array()) {
+	public function getAvailableOptions($filters = array(),  $especif = array()) {
 		$groups = array();
 		$ids = array();
 
 
 
-
-	
-
-		if(!empty($category)) {
-
-			$filters = array(
-				'caract' => $category
-				);
-			
-		}
-
 			/* Valores do filtro */
-		if(!empty($filters_caract)) {
-			
 
-			foreach($filters_caract as $value_filter => $value_key) {
-				
-				$filters = array(
-
-					'filters_caract' => $value_key
-
-					);
-			}
-			
-		}
 
 		if(!empty($especif['new_product'])) {
 			$filters = array(
@@ -154,10 +135,9 @@ class Products extends model
 		}
 
 		if(!empty($especif['sale'])) {
-			$filters = array(
-				'sale' => $especif['sale']
-			);
+			$filters['sale'] =  $especif['sale'];
 		}
+
 
 
 		$where = $this->buildWhere($filters);
@@ -167,15 +147,16 @@ class Products extends model
 		id,options
 		FROM products
 		WHERE ".implode(' AND ', $where);
-		$sql = $this->db->prepare($sql);
 
-		$this->bindWhere($filters, $sql);
+		$sql = $this->db->query($sql);
 
 		
-		$sql->execute();
+		
 
 
 		if($sql->rowCount() > 0) {
+
+			
 			foreach($sql->fetchAll() as $product) {
 				$ops = explode(',', $product['options']);
 				$ids[] = $product['id'];
@@ -225,7 +206,7 @@ class Products extends model
 		$sql = $this->db->query($sql);
 		
 		if($sql->rowCount() > 0) {
-			
+
 
 
 			foreach($sql->fetchAll() as $ops) {
@@ -258,36 +239,40 @@ class Products extends model
 			);
 
 
-		
-		if(!empty($filters['filters_caract'])) {
 
-			$where[] = "id IN (select id_product from products_options where products_options.p_value IN ('".implode("','", $filters['filters_caract'])."'))";
 
-		}
 
 		if(!empty($filters['caract'])) {
-			$where[] = 'id_category = :id_category';
+			$where[] = "id_category = ".$filters['caract'];
+
+			
 		}
+
+
 
 
 		if(!empty($filters['category'])) {
 
 			$where[] = 'id_category = :id_category';
+			
 		}
 
 		if(!empty($filters['sale'])) {
-			$where[] = 'sale = :sale';
+			$where[] = 'sale = '.$filters['sale'];
 
 		}
 
 		if(!empty($filters['new_product'])) {
-			$where[] = 'new_product = :new_product';
+			$where[] = "new_product = ".$filters['new_product'];
 		}
 
+
 		if(!empty($filters['options'])) {
-			
+		
 			$where[] = "id IN (select id_product from products_options where products_options.p_value IN ('".implode("','", $filters['options'])."'))";
+		
 		}
+
 
 		return $where;
 
