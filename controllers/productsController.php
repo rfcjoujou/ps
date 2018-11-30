@@ -18,7 +18,7 @@ class productsController extends Controller
 			$info = $products->getInfoProducts($id);
 
 			if(!empty($info)) {
-				$dados['prod_info'] = $info;
+				$dados['products'] = $info;
 				$dados['prod_images'] = $image->getImagesProducts($id);
 				$dados['prod_options'] = $products->getOptionsById($id);
 

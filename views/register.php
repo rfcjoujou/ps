@@ -18,7 +18,7 @@
 			<label for="email">E-mail:</label>
 			<input type="email" placeholder=" seu email." name="email" class="form-control" /><br/>
 
-			<label for="cnpj">CNPJ:</label>
+			<label for="cnpj">CNPJ/CPF:</label>
 			<input type="text" name="cnpj" class="form-control" placeholder="seu cnpj." /><br/>
 
 			<label for="password">Senha:</label>

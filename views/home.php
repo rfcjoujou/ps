@@ -1,4 +1,3 @@
-	
 	<div class="row" style="width:100%;margin:0px;">
 		<div class="col-sm-12" style="padding:0px;">
 			<div id="ex" class="slide carousel">
@@ -121,7 +120,7 @@
 			<div class="container_before_footer">	
 				<div class="before_footer">
 					<a href="<?php echo BASE_URL; ?>" style="width:100%;height:100%;">
-						<img class="img-fluid img-thumbnail" src="<?php echo BASE_URL; ?>assets/images/prod/3.jpg ?>" />
+						<img class="img-fluid img-thumbnail" src="<?php echo BASE_URL; ?>assets/images/prod/<?php echo $products[1]['images']['url'] ?>" />
 	<!-- Aqui tem um bug pois eu bnão estou pegando a image pelo id, vamos resolver depois -->
 						<h2 style="color:#fff;position:absolute;margin-top:-40px;margin-left:160px;">Vestido</h2>
 					</a>
@@ -136,7 +135,7 @@
 				<div class="before_footer">
 					<a style="text-decoration:none;" href="<?php echo BASE_URL; ?>lancamento" style="width:100%;height:100%;">
 						
-						<img class="img-fluid img-thumbnail" src="<?php echo BASE_URL; ?>assets/images/prod/2.jpg ?>" />
+						<img class="img-fluid img-thumbnail" src="<?php echo BASE_URL; ?>assets/images/prod/<?php echo $products[0]['images']['url']; ?> ?>" />
 						<h2 style="color:#fff;position:absolute;margin-top:-40px;margin-left:160px;">Nova estação</h2>
 					</a>
 				</div>
@@ -145,4 +144,4 @@
 		</div>
 	</div>
 </div>
-<?php print_r($products); ?>
+

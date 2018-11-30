@@ -19,7 +19,7 @@
 			E-mail:<br/>
 			<input type="email" placeholder="Escreva seu email aqui" name="email" class="form-control" /><br/><br/>
 
-			CNPJ:<br/>
+			CNPJ/CPF:<br/>
 			<input type="text" name="cnpj" class="form-control" /><br/><br/>
 
 			Senha:<br/>

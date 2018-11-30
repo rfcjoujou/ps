@@ -18,7 +18,10 @@ $(function(){
 	$('.addtocartfrom button').on('click', function(e) {
 		e.preventDefault();
 
-		var qt = parseInt($('.addtocart_qt').val());
+		var qt = parseInt($('.addtocart_qt').val()); 
+
+		
+
 		var action = $(this).attr('data-action');
 		
 		
@@ -36,7 +39,9 @@ $(function(){
 			
 		}
 
+		
 		$('.addtocart_qt').val(qt);
+		$('input[name=qt_product').val(qt);
 
 	});
 
@@ -98,6 +103,7 @@ $(function(){
 		
 
 	});
+	/* Plugin de mascara ativado no projeto (mask plugin[o nome])*/
 
-
+	$('input[name=cnpj]').mask('00.000.000-0000/00');
 });

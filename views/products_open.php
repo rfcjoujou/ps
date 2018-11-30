@@ -24,9 +24,9 @@
 	</div>
 	<div class="col-sm-6" style="margin-top:60px;">
 		<div class="information_prod">
-			<h5><?php echo utf8_encode($prod_info['name']); ?></h5>
+			<h5><?php echo utf8_encode($products['name']); ?></h5>
 			<hr/>
-			<p><?php echo utf8_encode($prod_info['description']); ?></p>
+			<p><?php echo utf8_encode($products['description']); ?></p>
 			<hr/>
 
 			<?php foreach($prod_options as $product_options): ?><br/>
@@ -39,11 +39,15 @@
 			<?php endforeach; ?>
 			<hr/>
 
-			De: <span class="price_from"><?php echo 'R$ '.number_format($prod_info['price_from'],2, ',', '.'); ?></span><br/>
-			<span class="price_original">Por: <strong style="font-size:24px;"><?php echo 'R$ '.number_format($prod_info['price'],2, ',', '.'); ?></strong></span>
+			De: <span class="price_from"><?php echo 'R$ '.number_format($products['price_from'],2, ',', '.'); ?></span><br/>
+			<span class="price_original">Por: <strong style="font-size:24px;"><?php echo 'R$ '.number_format($products['price'],2, ',', '.'); ?></strong></span>
 			<hr/>
 			
-				<form method="POST" class="addtocartfrom">
+				<form method="POST" class="addtocartfrom" action="<?php echo BASE_URL; ?>cart/add">
+					<input type="hidden" name="id_product" value="<?php echo $products['id']; ?>" />
+
+					<input type="hidden" name="qt_product" value="50" />
+
 					<p style="float:left;margin-right:4px;margin-top:3px;">Quantidade:</p>
 					<button data-action="decrease" >-</button><input type="text" name="qt" value="50" class="addtocart_qt" disabled/><button data-action="increase" >+</button>
 					
@@ -56,9 +60,3 @@
 
 
 
-<?php print_r($prod_info); ?>
-<br/><br/>
-
-<?php print_r($prod_images); ?>
-<br/><br/>
-<?php print_r($prod_options); ?>

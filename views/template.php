@@ -8,7 +8,7 @@
 
 		<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css" />
-		<link rel="stylesheet" href="assets/css/demo.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/demo.css" type="text/css" media="screen" />
 		<!-- Jquery/ javascript -->
 		
 
@@ -37,7 +37,7 @@
 					<div class="col-sm-2">
 						<div class="icones">
 							<a href="<?php echo BASE_URL; ?>" > <img height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/heart.png" /></a>
-							<a href="<?php echo BASE_URL; ?>"> <img height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/bag.png" /></a>
+							<a href="<?php echo BASE_URL; ?>cart"> <img height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/bag.png" /></a>
 							<a href="<?php echo BASE_URL; ?>login" ><img  onmove="touch_item()" height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/user.png" /></a>
 						</div>
 					</div>
@@ -234,8 +234,9 @@
 		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.min.js"></script>
 		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.bundle.min.js"></script> 
 		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
-		<script src="assets/js/jquery.wmuSlider.js"></script>
-		<script src="assets/jsjquery.wmuGallery.js"></script>
+		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.mask.min.js"></script>
+		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.wmuSlider.js"></script>
+		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/jsjquery.wmuGallery.js"></script>
 		<script>
 		       
 		         
