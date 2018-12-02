@@ -8,7 +8,7 @@
 		<h3>Registre-se</h3>
 
 		<?php if(!empty($error)): ?>
-			<div class="alert alert-warning"><?php echo $error; ?></div>
+			<div class="alert alert-warning"><?php echo $error; ?></div><br/>
 
 		<?php endif; ?>
 		<form method="POST" style="margin-bottom:50px;margin-top:-25px;">

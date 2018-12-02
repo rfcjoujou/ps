@@ -23,6 +23,7 @@ class loginController extends Controller
 					header("Location: ".BASE_URL);
 					exit;
 				} else {
+					
 					$dados['error'] = "Email e/ou senha incorreto(s)";
 				}
 				

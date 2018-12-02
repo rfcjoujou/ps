@@ -41,7 +41,7 @@
             var slideshowTimeout;
             var paginationControl;
             var isAnimating;
-            
+
             
             /* Load Slide
             ================================================== */ 
@@ -63,6 +63,7 @@
                         isAnimating = false;
                     });
                 } else if (options.animation == 'slide') {
+
                     if (!infinite) {
                         wrapper.animate({ marginLeft: -$this.width() / options.items * index }, options.animationDuration, function() {
                             isAnimating = false;

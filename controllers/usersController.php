@@ -18,22 +18,33 @@ class usersController extends Controller
 				$email = addslashes($_POST['email']);
 				$cnpj = addslashes($_POST['cnpj']);
 				$password = addslashes($_POST['password']);
+				$password_cont = strlen($password);
+
+				print_r($password_cont);
+
+				if($password_cont > 7) {
+
 				
 				/* CNPJ VAI DEPOIS QUE EU DESCOBRIR COMO FAÇA A CONSULTA*/
-				if($users->existEmail($email) == false) {
+					if($users->existEmail($email) == false) {
 
-					$_SESSION['cLogin'] = $users->register_user($name, $email, $password);
-					
-					if(!empty($_SESSION['cLogin'])) {
-						header("Location: ".BASE_URL."users/account");
-						exit;
+						$_SESSION['cLogin'] = $users->register_user($name, $email, $password);
+						
+						if(!empty($_SESSION['cLogin'])) {
+							header("Location: ".BASE_URL."users/account");
+							exit;
+						}
+
+					} else {
+						$dados['error'] = "Esse e-mail já existe, tente novamente";
+
+						/* Caso o usuário existir*/
 					}
-
 				} else {
-					$dados['error'] = "Esse e-mail já existe, tente novamente";
-
-					/* Caso o usuário existir*/
+					$dados['error'] = 'O campo de Senha deve contér no mínimo 8 caracteres';
 				}
+
+
 			} else {
 				/* Algum campo vazio*/
 				$dados['error'] = "Preencha todos os campos";
@@ -66,10 +77,15 @@ class usersController extends Controller
 			if(!empty($_GET['p'])) {
 				$p = $_GET['p'];
 
+				
+				
+				
+
 				if($p == 1) {
 					/* pegaria a  tabela purchase(venda), e depois purchase(product)*/
 					$dados['pagina'] = $users->myRequests($p, $id);
 					print_r($dados['pagina']);
+
 
 					exit;
 				} else if($p == 2) {
@@ -82,7 +98,47 @@ class usersController extends Controller
 				}
 
 
+			} else {
+
+
+
+
+				if(!empty($_POST['name'])) {
+					if(!empty($_POST['email']) && !empty($_POST['cpf']) && !empty($_POST['old_password']) && !empty($_POST['new_password'])) {
+
+						$name = addslashes($_POST['name']);
+						$email = addslashes($_POST['email']);
+						$cpf = addslashes($_POST['cpf']);
+						$old_password = addslashes($_POST['old_password']);
+						$new_password = addslashes($_POST['new_password']);
+
+
+
+						if($users->existPassword($id, $old_password)) {
+							
+							$new_password_cont = strlen($new_password);
+						
+
+							if($new_password_cont > 7) {
+
+								$users->updateInformationUser($id, $name ,$email, $cpf, $new_password);
+
+							} else {
+								$dados['error'] = 'Sua nova senha deve contér 8 caracteres';
+							}
+						} else {
+							$dados['error'] = "Senha invalida, Tente novamente.";
+						}
+
+
+					} else {
+						$dados['error'] = "Para alterar suas informações preencha todos os campos";
+					}
+
+				}
+
 			}
+
 			$this->loadTemplate('account', $dados);
 
 		} else {

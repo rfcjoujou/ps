@@ -81,10 +81,10 @@
 	<?php endforeach; ?>
 
 	</div>
-	<div class="row" style="background-color:#000;">
+	<div class="row" style="background-image: linear-gradient(to left, #eae3e3, #848484);">
 		<div class="col-sm">
 			<div class="inter">
-				<h5 >Seu interesse</h5>
+				<h4 style="margin-bottom:20px;color:#fff;">Seu interesse</h4>
 				<div class="campo_interesse">
 
 
@@ -92,11 +92,11 @@
 				        
 				        <div class="wmuSliderWrapper">
 				        	<?php foreach($products as $product): ?>
-				            <article>
+				            <article style="height:340px;">
 				            	<a href="<?php echo BASE_URL ?>products/open/<?php echo $product['id']; ?>" style="text-decoration:none;float:buttom;">
-				                <img src="<?php echo BASE_URL ?>assets/images/prod/<?php echo $product['images']['url'] ?>" /><br/>
+				                <img class="img-fluid" style="height:87%;width:80%;border-radius:1px;margin-bottom:6px;" src="<?php echo BASE_URL ?>assets/images/prod/<?php echo $product['images']['url'] ?>" /><br/>
 				                </a>
-				                <a href="<?php echo BASE_URL ?>products/open/<?php echo $product['id']; ?>" style="text-decoration:none;float:buttom;">Compra</a>
+				                <a class="btn btn_buy" href="<?php echo BASE_URL ?>products/open/<?php echo $product['id']; ?>" style="width:80%;text-decoration:none;float:buttom;">Compra</a>
 				            </article>
 				    		<?php endforeach; ?>
 				           

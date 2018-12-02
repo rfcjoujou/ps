@@ -14,6 +14,24 @@ class Users extends Model
 
 	}
 
+
+	/* Atualizar as informaões de usuário */
+
+	public function updateInformationUser($id, $name ,$email, $cpf, $password) {
+
+		$sql = "UPDATE users SET name = :name AND email = :email AND cpf = :cpf AND password = :password WHERE id = :id";
+		$sql = $this->db->prepare($sql);
+		$sql->bindValue(":id", $id);
+		$sql->bindValue(":name", $name);
+		$sql->bindValue(":email", $email);
+		$sql->bindValue(":cpf", $cpf);
+		$sql->bindValue(":password", $password);	
+		$sql->execute();
+
+
+	}
+
+
 	public function existEmail($email) {
 		$sql = "SELECT * FROM users WHERE email = :email";
 		$sql = $this->db->prepare($sql);
@@ -27,6 +45,23 @@ class Users extends Model
 			return true;
 		}
 
+	}
+
+	public function existPassword($id, $password) {
+
+		$sql = "SELECT * FROM users WHERE id = :id AND password = :password";
+		$sql = $this->db->prepare($sql);
+		$sql->bindValue(":id", $id);
+		$sql->bindValue(":password", md5($password));
+
+		$sql->execute();
+
+
+		if($sql->rowCount() > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/* Login usuario*/

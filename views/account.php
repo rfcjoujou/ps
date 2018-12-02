@@ -25,18 +25,27 @@
 				<div class="information"> 
 					<h5 style="text-align:center;">Olá, <?php echo utf8_encode($user['name']); ?>.</h5><p>Aqui você pode alterar 
 						suas informações, e ter acesso a sua lista de desejos, e gerenciar suas notificações.</p>
-					<form>
-
-						<label>Seu Nome:</label>
-						<input type="text" value="<?php echo utf8_encode($user['name']); ?>" class="form-control"  name="email"/>
-						<label for="email">Seu Email:</label>
-						<input type="text"  value="<?php echo $user['email']; ?>" class="form-control"  name="email"/>
-						<label>Seu CPF:</label>
-						<input type="text" name="cpf" class="form-control" />
 					
-						<label for="password">Sua Senha:</label>
-						<input type="password" class="form-control" placeholder="digite sua senha" name="password"/><br/>
-							
+						<?php if(!empty($error)): ?>
+						<div class="alert alert-warning"><?php echo $error; ?></div>
+						<?php endif; ?>
+
+					<form method="POST">
+
+						<label for="name">Nome:</label>
+						<input type="text" value="<?php echo utf8_encode($user['name']); ?>" class="form-control"  name="name"/>
+						
+						<label for="email"> Email:</label>
+						<input type="text"  value="<?php echo $user['email']; ?>" class="form-control"  name="email"/>
+						<label>CPF:</label>
+						<input type="text" name="cpf" value="<?php echo $user['cpf']; ?>" class="form-control" />
+					
+						<label for="password">Senha Atual:</label>
+						<input type="password" class="form-control" placeholder="digite sua senha" name="old_password"/><br/>
+						
+						<label for="password">Nova Senha:</label>
+						<input type="password" class="form-control" placeholder="digite sua senha" name="new_password"/><br/>
+
 						<input type="submit" class="form-control" value="Salvar alteração" />
 
 					</form>
