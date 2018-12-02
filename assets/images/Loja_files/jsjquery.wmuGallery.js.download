@@ -2,14 +2,13 @@
 <html>
 	<head>
 		
-		<meta charset="utf-8" /> 
-		<!-- <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"> -->
+		<meta charset="utf-8" />
 		<title>Loja</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-		<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/style.css" />
-		<link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/demo.css" type="text/css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="http://localhost/myloja/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="http://localhost/myloja/assets/css/style.css" />
+		<link rel="stylesheet" href="http://localhost/myloja/assets/css/demo.css" type="text/css" media="screen" />
 		<!-- Jquery/ javascript -->
 		
 
@@ -21,7 +20,7 @@
 				<div class="row" style="height:50px;">
 					<div class="col-sm-3">
 						<div class="logo">
-							<div class="logoint"><a href="<?php echo BASE_URL; ?>">Lady Lu</a></div>
+							<div class="logoint"><a href="http://localhost/myloja/">Lady Lu</a></div>
 						</div>
 					</div>
 					<div class="col-sm-7" id="div_busca">
@@ -29,7 +28,7 @@
 							<input type="text" id="busca" name="busca" class="form-control" />
 						
 							<button class="botao_busca btn">
-								 <img src="<?php echo BASE_URL; ?>assets/media/menu_icone/search.png" /> 
+								 <img src="http://localhost/myloja/assets/media/menu_icone/search.png" /> 
 							</button>
 						</div>
 
@@ -37,9 +36,9 @@
 					</div>
 					<div class="col-sm-2">
 						<div class="icones">
-							<a href="<?php echo BASE_URL; ?>" > <img height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/heart.png" /></a>
-							<a href="<?php echo BASE_URL; ?>cart"> <img height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/bag.png" /></a>
-							<a href="<?php echo BASE_URL; ?>login" ><img  onmove="touch_item()" height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/user.png" /></a>
+							<a href="http://localhost/myloja/" > <img height="28px" width="28px" src="http://localhost/myloja/assets/media/menu_icone/heart.png" /></a>
+							<a href="http://localhost/myloja/cart"> <img height="28px" width="28px" src="http://localhost/myloja/assets/media/menu_icone/bag.png" /></a>
+							<a href="http://localhost/myloja/login" ><img  onmove="touch_item()" height="28px" width="28px" src="http://localhost/myloja/assets/media/menu_icone/user.png" /></a>
 						</div>
 					</div>
 
@@ -55,13 +54,13 @@
 
 							<ul >
 								
-								<li><a class="btn " href="<?php echo BASE_URL; ?>calca" >Calça</a></li>
-								<li><a class="btn " href="<?php echo BASE_URL; ?>shorts"  >Shorts</a></li>
-								<li><a class="btn" href="<?php echo BASE_URL; ?>blusas"  >Blusas</a></li>
-								<li><a class="btn" href="<?php echo BASE_URL; ?>saia"  >Saia</a></li>
-								<li><a class="btn " href="<?php echo BASE_URL; ?>promocoes" >Promoções</a></li>
-								<li><a class="btn " href="<?php echo BASE_URL; ?>lancamento" >Lançamento</a></li>
-								<li><a class="btn" href="<?php echo BASE_URL; ?>quem-somos"  >Quem Somos</a></li>
+								<li><a class="btn " href="http://localhost/myloja/calca" >Calça</a></li>
+								<li><a class="btn " href="http://localhost/myloja/shorts"  >Shorts</a></li>
+								<li><a class="btn" href="http://localhost/myloja/blusas"  >Blusas</a></li>
+								<li><a class="btn" href="http://localhost/myloja/saia"  >Saia</a></li>
+								<li><a class="btn " href="http://localhost/myloja/promocoes" >Promoções</a></li>
+								<li><a class="btn " href="http://localhost/myloja/lancamento" >Lançamento</a></li>
+								<li><a class="btn" href="http://localhost/myloja/quem-somos"  >Quem Somos</a></li>
 							</ul>
 
 					</div>
@@ -79,20 +78,10 @@
 		</nav>
 
 		<section>
-			<?php if($viewName == 'home'): ?>
-					
-			<div class="container-fluid" style="padding:0px;width:1348px;margin:0px;">		
-
-					<?php $this->loadViewInTemplate($viewName, $viewData); ?>
-				
-			</div>
-			<?php else :?>
-
+			
 			<div class="container">	
-					<?php $this->loadViewInTemplate($viewName, $viewData); ?>
-			</div>
-			<?php endif; ?>
-		</section>
+					Not found...			</div>
+					</section>
 		
 		<footer class="page-footer font-small teal pt-4">
 
@@ -232,12 +221,12 @@
 
 		<!-- Jquery/ javascript -->
 		<script type="text/javascript" src="assets/js/modernizr.custom.min.js"></script>    
-		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.min.js"></script>
-		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.bundle.min.js"></script> 
-		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.mask.min.js"></script>
-		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.wmuSlider.js"></script>
-		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/jsjquery.wmuGallery.js"></script>
+		<script type="text/javascript" src="http://localhost/myloja/assets/js/jquery.min.js"></script>
+		<script type="text/javascript" src="http://localhost/myloja/assets/js/bootstrap.bundle.min.js"></script> 
+		<script type="text/javascript" src="http://localhost/myloja/assets/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="http://localhost/myloja/assets/js/jquery.mask.min.js"></script>
+		<script type="text/javascript" src="http://localhost/myloja/assets/js/jquery.wmuSlider.js"></script>
+		<script type="text/javascript" src="http://localhost/myloja/assets/jsjquery.wmuGallery.js"></script>
 		<script>
 		       
 		         
@@ -251,7 +240,7 @@
 		</script>
 
 
-		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/script.js"></script>
+		<script type="text/javascript" src="http://localhost/myloja/assets/js/script.js"></script>
 
 	</body>
 </html>

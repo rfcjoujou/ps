@@ -60,8 +60,8 @@ class usersController extends Controller
 	public function account() {
 		$dados = array();
 		$users = new Users();
-
-
+		$users_address = new Users_address();
+		
 		if(!empty($_SESSION['cLogin'])) {
 			
 
@@ -82,15 +82,51 @@ class usersController extends Controller
 				
 
 				if($p == 1) {
-					/* pegaria a  tabela purchase(venda), e depois purchase(product)*/
-					$dados['pagina'] = $users->myRequests($p, $id);
-					print_r($dados['pagina']);
+					/* pegaria a  tabela purchase(venda), e depois purccthase(produ)*/
 
+					
+					
 
+					$this->loadTemplate('myListOfBought', $dados);
 					exit;
 				} else if($p == 2) {
+					/* Pagina de edição de endereço */
 					$address = new Users_address();
 					$dados['user_address'] = $address->getInformation_address($id);
+					
+					if(!empty($_POST['cep']) && !empty($_POST['rua']) && 
+						!empty($_POST['numero']) && !empty($_POST['bairro']) && 
+						!empty($_POST['cidade']) && !empty($_POST['estado'])) {
+
+
+
+						$cep = addslashes($_POST['cep']);
+						$rua = utf8_decode(addslashes($_POST['rua']));
+						$numero = utf8_decode(addslashes($_POST['numero']));
+						$bairro = utf8_decode(addslashes($_POST['bairro']));
+						$cidade = utf8_decode(addslashes($_POST['cidade']));
+						$estado = utf8_decode(addslashes($_POST['estado']));
+
+						/* Se não tiver complemento, vai ser vazio:*/
+						$complemento = '';
+
+						if(!empty($_POST['complemento'])) {
+							$complemento = utf8_decode(addslashes($_POST['complemento']));
+
+							$users_address->Update_AdressUser($cep,$rua,$numero, $bairro,$cidade, $estado, $complemento, $id);
+							header('Location: '.BASE_URL.'users/account/?p=2');
+							exit;						
+
+						} else {
+
+							$users_address->Update_AdressUser($cep,$rua,$numero, $bairro,$cidade, $estado, $complemento, $id);
+							header('Location: '.BASE_URL.'users/account/?p=2');
+							exit;
+						}
+
+
+
+					}
 
 					
 					$this->loadTemplate('endereco', $dados);
@@ -104,27 +140,36 @@ class usersController extends Controller
 
 
 				if(!empty($_POST['name'])) {
-					if(!empty($_POST['email']) && !empty($_POST['cpf']) && !empty($_POST['old_password']) && !empty($_POST['new_password'])) {
 
-						$name = addslashes($_POST['name']);
-						$email = addslashes($_POST['email']);
+					if(!empty($_POST['cpf']) && !empty($_POST['old_password'])) {
+
+						$name = utf8_decode((addslashes($_POST['name'])));
+						//$email = utf8_decode(addslashes($_POST['email']));
 						$cpf = addslashes($_POST['cpf']);
 						$old_password = addslashes($_POST['old_password']);
-						$new_password = addslashes($_POST['new_password']);
+						
 
 
 
 						if($users->existPassword($id, $old_password)) {
-							
-							$new_password_cont = strlen($new_password);
-						
+							if(!empty($_POST['new_password'])) {
 
-							if($new_password_cont > 7) {
+								$new_password = addslashes($_POST['new_password']);
+								$new_password_cont = strlen($new_password);
 
-								$users->updateInformationUser($id, $name ,$email, $cpf, $new_password);
+								if($new_password_cont > 7) {
 
+									$users->updateInformationUser($id, $name, $cpf, $new_password);
+									header('Location: '.BASE_URL.'users/account');
+									exit;
+								} else {
+									$dados['error'] = 'Sua nova senha deve contér 8 caracteres';
+								}
 							} else {
-								$dados['error'] = 'Sua nova senha deve contér 8 caracteres';
+
+								$users->updateInformationUser($id, $name, $cpf, $old_password);
+								header('Location: '.BASE_URL.'users/account');
+								exit;
 							}
 						} else {
 							$dados['error'] = "Senha invalida, Tente novamente.";
@@ -142,6 +187,7 @@ class usersController extends Controller
 			$this->loadTemplate('account', $dados);
 
 		} else {
+
 			header("Location: ".BASE_URL."login");
 			exit;
 		}
@@ -149,7 +195,7 @@ class usersController extends Controller
 
 		
 	}
-
+/*
 	public function address() {
 		if(!empty($_SESSION['cLogin'])) {
 			if(!empty($_POST['cep'])) {
@@ -191,8 +237,8 @@ class usersController extends Controller
 		
 
 		
-		
-	}
+		 
+	} */
 
 
 

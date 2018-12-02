@@ -9,10 +9,9 @@ class loginController extends Controller
 
 
 		if(isset($_POST['email'])) {
-			if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['cnpj'])) {
+			if(!empty($_POST['email']) && !empty($_POST['password'])) {
 				$users = new Users();
 				$email = addslashes($_POST['email']);
-				$cnpj = addslashes($_POST['cnpj']);
 				$password = addslashes($_POST['password']);
 				/*Depois vamos mandar cnpj*/
 

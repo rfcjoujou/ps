@@ -23,8 +23,8 @@
 				<div class="information"> 
 					<br/>		
 					<h4 style="text-align:center;">Informações de endereço</h4><br/>
-					<form action="<?php BASE_URL; ?>address" method="POST">
-
+					<form action="<?php echo  BASE_URL; ?>users/account?p=2" method="POST">
+						<?php header('Content-Type: text/html; charset=utf-8'); ?>
 						<label for="cep">CEP:</label>
 						<input type="text" name="cep" value="<?php echo utf8_encode($user_address['cep']); ?>" class="form-control" />
 							
@@ -48,7 +48,7 @@
 
 							
 
-						<label>Estado:</label>
+						<label for="estado">Estado:</label>
 						<input type="text" name="estado" value="<?php echo utf8_encode($user_address['estado']); ?>" class="form-control" />
 
 

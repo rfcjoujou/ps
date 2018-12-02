@@ -6,7 +6,7 @@
 <div class="row">
 	<div class="col-sm-5 form_login" id="form_register"><br/>
 		<h3>Registre-se</h3>
-
+		<br/>
 		<?php if(!empty($error)): ?>
 			<div class="alert alert-warning"><?php echo $error; ?></div><br/>
 

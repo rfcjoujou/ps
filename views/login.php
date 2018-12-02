@@ -16,13 +16,12 @@
 		<?php endif; ?>
 		
 		<form method="POST" >
-			E-mail:<br/>
-			<input type="email" placeholder="Escreva seu email aqui" name="email" class="form-control" /><br/><br/>
+			<label for="email">E-mail</label>
+			<input type="email" placeholder="Escreva seu email aqui" name="email" class="form-control" /><br/>
 
-			CNPJ/CPF:<br/>
-			<input type="text" name="cnpj" class="form-control" /><br/><br/>
 
-			Senha:<br/>
+
+			<label for="password">Senha</label>
 			<input class="form-control" type="password" name="password" /><br/>
 
 			<input class="form-control btn btn_logar" type="submit" value="Entrar"/>

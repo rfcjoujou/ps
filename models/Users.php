@@ -17,16 +17,17 @@ class Users extends Model
 
 	/* Atualizar as informaões de usuário */
 
-	public function updateInformationUser($id, $name ,$email, $cpf, $password) {
+	public function updateInformationUser($id, $name , $cpf, $password) {
 
-		$sql = "UPDATE users SET name = :name AND email = :email AND cpf = :cpf AND password = :password WHERE id = :id";
+
+		$sql = "UPDATE users SET name = :name, cpf = :cpf, password = :password WHERE id = :id";
 		$sql = $this->db->prepare($sql);
 		$sql->bindValue(":id", $id);
 		$sql->bindValue(":name", $name);
-		$sql->bindValue(":email", $email);
 		$sql->bindValue(":cpf", $cpf);
-		$sql->bindValue(":password", $password);	
+		$sql->bindValue(":password", md5($password));	
 		$sql->execute();
+
 
 
 	}

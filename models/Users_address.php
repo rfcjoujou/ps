@@ -38,9 +38,25 @@ class Users_address extends model
 			$sql->bindValue(":estado", $estado);
 			$sql->bindValue(":id", $id);
 			
-			$sql->execute();
+			$sql->execute();	
 		}
 
 
+	}
+
+
+	public function Update_AdressUser($cep,$rua,$numero, $bairro,$cidade, $estado, $complemento, $id) {
+		$sql = "UPDATE users_address SET cep = :cep, rua = :rua, bairro = :bairro, cidade = :cidade, 
+			estado = :estado, complemento = :complemento WHERE id = :id";
+		$sql = $this->db->prepare($sql);
+		$sql->bindValue(":cep", $cep);
+		$sql->bindValue(":rua", $rua);
+		$sql->bindValue(":bairro", $bairro);
+		$sql->bindValue(":cidade", $cidade);
+		$sql->bindValue(":estado", $estado);
+		$sql->bindValue(":id", $id);
+		$sql->bindValue(":complemento", $complemento);
+		$sql->execute();
+		
 	}
 }
