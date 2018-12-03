@@ -458,7 +458,12 @@ nav {
 	display:flex;
 	margin:auto;
 	/*flex-direction:column;*/
-	
+
+
+}
+.painel_container:hover {
+
+	border:1.3px solid #000;
 
 }
 .painel_btns {
@@ -482,8 +487,8 @@ nav {
 
 
 .painel_container a:hover {
-	border-top:4px solid #b5b4b4;
-	border-bottom:4px solid #b5b4b4;
+	border:1.5px solid #b5b4b4;
+	
 	border-color: #b5b4b4;
 } 
 
@@ -546,51 +551,16 @@ nav {
 	color:#fff;
 }
 .mainphoto {
-	margin-top:50px;
-}
-.setas_prev,
-.setas_next {
-	width:20px;
-	height:472px;
-	display:flex;
-	position:relative;
-
-	align-items:center;
-   	justify-content:center;
-   	margin-top:50px;
-}
-.setas_prev {
-
-	float:left;
-   	
-
-}
-.setas_next {
-	float:right;
-
+	
 }
 
 
-.seta-prev {
-	width: 23px;
-    height: 45px;
-    background: url(../images/prod_slider/prev.png) center center;
-    float:left;	
-
-}
-.seta-next {
-    width: 23px;
-    height: 45px;
-    background: url(../images/prod_slider/next.png) center center;
-    float: right;
-
-}
 .mainphoto {
 	display:flex;
 	justify-content:center;
 }
 .mainphoto img {
-	width:90%;
+	width:100%;
 
 	height:470px;
 }
@@ -599,12 +569,13 @@ nav {
 	height:60px;
 	float:left;
 	text-align:center;
+
 	margin-top:10px;
 	cursor:pointer;
 }
 .photo_item img {
 
-	width:90%;
+	width:95%;
 	height:100%;
 }
 

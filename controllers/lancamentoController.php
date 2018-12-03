@@ -58,6 +58,6 @@ class lancamentoController extends Controller
 		}
 
 
-		$this->loadTemplate('lancamento', $dados);
+		$this->loadTemplate('categories_products', $dados);
 	}
 }

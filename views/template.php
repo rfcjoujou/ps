@@ -50,7 +50,7 @@
 		<nav class="navbar topnav">
 			<div class="container-fluid">
 				<div class="row" style="width:100%;">
-					<div class="col-sm-10 list_menu">
+					<div class="col-sm list_menu">
 
 
 							<ul >
@@ -61,16 +61,13 @@
 								<li><a class="btn" href="<?php echo BASE_URL; ?>saia"  >Saia</a></li>
 								<li><a class="btn " href="<?php echo BASE_URL; ?>promocoes" >Promoções</a></li>
 								<li><a class="btn " href="<?php echo BASE_URL; ?>lancamento" >Lançamento</a></li>
-								<li><a class="btn" href="<?php echo BASE_URL; ?>quem-somos"  >Quem Somos</a></li>
+								<li><a class="btn" href="<?php echo BASE_URL; ?>body">Body</a></li>
+								<li><a class="btn" href="<?php echo BASE_URL; ?>vestido">Vestido</a></li>
 							</ul>
 
 					</div>
 
-					<div class="col-sm-2">
-						<div class="filtro">
-							Filtro
-						</div>
-					</div>
+
 
 					
 

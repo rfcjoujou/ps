@@ -41,6 +41,6 @@ class calcaController extends Controller
 		}
 
 
-		$this->loadTemplate('calca', $dados);
+		$this->loadTemplate('categories_products', $dados);
 	}
 }

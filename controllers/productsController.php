@@ -20,7 +20,9 @@ class productsController extends Controller
 			if(!empty($info)) {
 				$dados['products'] = $info;
 				$dados['prod_images'] = $image->getImagesProducts($id);
-				$dados['prod_options'] = $products->getOptionsById($id);
+				$dados['quantity_stock_option'] = $products->getQuantityOptionById($id);
+
+
 
 				$this->loadTemplate('products_open', $dados);
 			} else {

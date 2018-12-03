@@ -4,13 +4,20 @@ class cartController extends Controller
 	public function index() {
 		$dados = array();
 		$products = new Products();
+		$cart = new Cart();
 
 		if(empty($_SESSION['cLogin'])) {
 			header('Location: '.BASE_URL.'login');
 			exit;
 		}
 
+		/* Veirifcação para ve se tem algum produto no carrinho, se não tiver redireciona*/
+		if(!isset($_SESSION['cart']) || (isset($_SESSION['cart']) && count($_SESSION['cart']) == 0)) {
+			header("Location: ".BASE_URL);
+			exit;
+		}
 
+		$dados['productsInCart'] = $cart->getListOfProductsInCart();
 
 
 

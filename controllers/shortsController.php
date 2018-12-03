@@ -39,6 +39,6 @@ class shortsController extends Controller
 
 		}
 
-		$this->loadTemplate('shorts', $dados);
+		$this->loadTemplate('categories_products', $dados);
 	}
 }

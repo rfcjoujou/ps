@@ -54,7 +54,7 @@ class Products extends model
 		return $array;
 	}
 
-	public function getInfoProducts($id) {
+	public function getInfoProducts($id, $img = 0) {
 		$array = array();
 
 		$sql = "SELECT * FROM products WHERE id = :id";
@@ -65,58 +65,44 @@ class Products extends model
 		if($sql->rowCount() > 0) {
 			
 			$array = $sql->fetch();
+
+
 		}
 
 		return $array;
 
 	}
 
-	public function getOptionsById($id) {
-		$options = array();
 
-		$sql = "SELECT options FROM products WHERE id = :id";
+	public function getQuantityOptionById($id) {
+		$array = array();
+		$sql = "SELECT * FROM products_options WHERE id_product = :id";
 		$sql = $this->db->prepare($sql);
 		$sql->bindValue(":id", $id);
 		$sql->execute();
 
 		if($sql->rowCount() > 0) {
-			$options = $sql->fetch();
-			$options = $options['options'];
+			$array = $sql->fetchAll();
 
+			if(!empty($array)) {
+				$options = New Options();
+				foreach($array as $op_id) {
 
-			if(!empty($options)) {
-				$sql = "SELECT * FROM options WHERE id IN (".$options.")";
-				$sql = $this->db->query($sql);
-
-				$options = $sql->fetchAll();
-			}
-
-			$sql  = "SELECT * FROM products_options WHERE id_product = :id";
-			$sql = $this->db->prepare($sql);
-			$sql->bindValue(":id", $id);
-			$sql->execute();
-			$options_values = array();
-
-			if($sql->rowCount() > 0) {
-				foreach($sql->fetchAll() as $op) {
-					$options_values[$op['id_option']] = $op['p_value'];
+				$array['option_name'] = $options->getName($op_id['id_option']);
 				}
+
+
+
 			}
-
-			foreach($options as $ok => $op) {
-				if(isset($options_values[$op['id']])) {
-					$options[$ok]['value'] = $options_values[$op['id']];
-
-
-				} else {
-					$options[$ok]['value'] = '';
-				}
-			}
-
+	
 		}
 
-		return $options;
+
+
+		return $array;
 	}
+
+
 
 	public function getAvailableOptions($filters = array(),  $especif = array()) {
 		$groups = array();

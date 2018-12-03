@@ -56,6 +56,6 @@ class promocoesController extends Controller
 
 		}
 
-		$this->loadTemplate("promocoes", $dados);
+		$this->loadTemplate("categories_products", $dados);
 	}
 }

@@ -1,12 +1,13 @@
 <?php 
-class saiaController extends Controller
+class bodyController extends Controller 
 {
+
 	public function index() {
 		$dados = array();
 		$products = new Products();
 		$f = new Filters();
 
-		$filters['caract'] = 8;
+		$filters['caract'] = 3;
 		/* Filtro de caracteristica dos produtos */
 		$filters_caract = array();
 
@@ -43,4 +44,5 @@ class saiaController extends Controller
 
 		$this->loadTemplate('categories_products', $dados);
 	}
+
 }
