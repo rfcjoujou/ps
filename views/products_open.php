@@ -22,67 +22,71 @@
 			<hr/>
 			<p><?php echo utf8_encode($products['description']); ?></p>
 			<hr/>
-			<label style="float:left;text-align:center;">Cor</label>
-			<select id="option_color" onchange="mudouColor()" class="form-control" style="margin-top:-2px;height:70%;float:left;">
-				<option></option>
-				<?php foreach($quantity_stock_option as $stock_option): ?><br/>
-
-				<?php if($stock_option['id_option'] == 2 && $stock_option['option_stock'] > 0): ?>
-				
-
-				<option value="<?php echo $stock_option['p_value']; ?>"><?php echo $stock_option['p_value']; ?>
-					<?php if($stock_option['option_stock']  == '1'): ?>
-					<span>(<?php echo $stock_option['option_stock'] ?> item no estoque)</span>
-					<?php else: ?>
-					<span>(<?php echo $stock_option['option_stock'] ?> itens no estoque)</span>
-					<?php endif; ?>
-
-
-				</option>
-
-				<?php endif; ?>
-				<?php endforeach; ?>
-				
-			</select>
-			<hr/><br/>
-			<label style="float:left;text-align:center;">Tamanho</label>
-			<select class="form-control" style="margin-top:-2px;height:70%;float:left;">
-				<option></option>
-				<?php foreach($quantity_stock_option as $stock_option): ?><br/>
-				
-				<?php if($stock_option['id_option'] == 1 && $stock_option['option_stock'] > 0): ?>
-				
-				<option><?php echo $stock_option['p_value']; ?>
-					<?php if($stock_option['option_stock']  == '1'): ?>
-					<span>(<?php echo $stock_option['option_stock'] ?> item no estoque)</span>
-					<?php else: ?>
-					<span>(<?php echo $stock_option['option_stock'] ?> itens no estoque)</span>
-					<?php endif; ?>
-
-				</option>
-
-
-				
-				<?php endif; ?>
-				<?php endforeach; ?>
-				
-			</select>
-			<hr/>
-
-			De: <span class="price_from"><?php echo 'R$ '.number_format($products['price_from'],2, ',', '.'); ?></span><br/>
-			<span class="price_original">Por: <strong style="font-size:24px;"><?php echo 'R$ '.number_format($products['price'],2, ',', '.'); ?></strong></span>
-			<hr/>
 			
-				<form method="POST" class="addtocartfrom" action="<?php echo BASE_URL; ?>cart/add">
-					<input type="hidden" name="id_product" value="<?php echo $products['id']; ?>" />
+			<form method="POST" class="addtocartfrom" action="<?php echo BASE_URL; ?>cart/add">
 
-					<input type="hidden" name="qt_product" value="1" />
-
-					<p style="float:left;margin-right:4px;margin-top:3px;">Quantidade:</p>
-					<button data-action="decrease" >-</button><input type="text" name="qt" value="1" class="addtocart_qt" disabled/><button data-action="increase" >+</button>
+				<label style="float:left;text-align:center;">Cor</label>
+				<select name="option_cor" class="form-control" style="margin-top:-2px;height:70%;float:left;">
+					<option></option>
+					<?php foreach($quantity_stock_option as $stock_option): ?><br/>
 					
-					<input class="btn addtocart_submit" type="submit" value="Comprar" />
-				</form>
+					<?php if($stock_option['id_option'] == 2 && $stock_option['option_stock'] > 0): ?>
+					
+					<option  value="<?php echo $stock_option['p_value']; ?>"><?php echo $stock_option['p_value']; ?>
+						<?php if($stock_option['option_stock']  == '1'): ?>
+						<span>(<?php echo $stock_option['option_stock'] ?> item no estoque)</span>
+						<?php else: ?>
+						<span>(<?php echo $stock_option['option_stock'] ?> itens no estoque)</span>
+						<?php endif; ?>
+
+					</option>
+
+
+					
+					<?php endif; ?>
+					<?php endforeach; ?>
+					
+				</select>
+
+				<hr/><br/>
+				<label style="float:left;text-align:center;">Tamanho</label>
+				<select name="option_tamanho" class="form-control" style="margin-top:-2px;height:70%;float:left;">
+					<option></option>
+					<?php foreach($quantity_stock_option as $stock_option): ?><br/>
+					
+					<?php if($stock_option['id_option'] == 1 && $stock_option['option_stock'] > 0): ?>
+					
+					<option  value="<?php echo $stock_option['p_value']; ?>"><?php echo $stock_option['p_value']; ?>
+						<?php if($stock_option['option_stock']  == '1'): ?>
+						<span>(<?php echo $stock_option['option_stock'] ?> item no estoque)</span>
+						<?php else: ?>
+						<span>(<?php echo $stock_option['option_stock'] ?> itens no estoque)</span>
+						<?php endif; ?>
+
+					</option>
+
+
+					
+					<?php endif; ?>
+					<?php endforeach; ?>
+					
+				</select>
+				<hr/>
+
+				De: <span class="price_from"><?php echo 'R$ '.number_format($products['price_from'],2, ',', '.'); ?></span><br/>
+				<span class="price_original">Por: <strong style="font-size:24px;"><?php echo 'R$ '.number_format($products['price'],2, ',', '.'); ?></strong></span>
+				<hr/>
+				
+					
+						<input type="hidden" name="id_product" value="<?php echo $products['id']; ?>" />
+						<input type="hidden" name="option_color" />
+						<input type="hidden" name="qt_product" value="1" />
+
+						<p style="float:left;margin-right:4px;margin-top:3px;">Quantidade:</p>
+						<button data-action="decrease" >-</button><input type="text" name="qt" value="1" class="addtocart_qt" disabled/><button data-action="increase" >+</button>
+						
+						<input class="btn addtocart_submit" type="submit" value="Comprar" />
+			</form>
 			
 		</div>
 	</div>

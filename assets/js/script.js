@@ -27,7 +27,7 @@ $(function(){
 		
 		if(action == 'decrease') {
 			
-			if(qt-1 >= 50) {
+			if(qt-1 >= 1) {
 				
 				qt = qt - 1;
 				

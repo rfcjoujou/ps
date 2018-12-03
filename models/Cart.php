@@ -7,23 +7,17 @@ class Cart extends model
 		$products_images = new Products_images();
 		$array = array();
 		$cart = $_SESSION['cart'];
-		$img = 1;
+		
+
+
 
 		foreach($cart as $id => $qt) {
 
-			$info = $products->getInfoProducts($id, $img);
-			$prod_image = $products_images->getImagesById($id, $primary_image);
-
+			$info = $products->getInfoProducts($id);
+			$prod_image = $products_images->getImagesById($id);
 
 
 			
-
-/*			$imgs = array(array('url_img' => $prod_image['url']));
-
-			foreach($imgs as $key) {
-
-			}*/
-
 
 			
 			$array[] = array(
@@ -31,11 +25,11 @@ class Cart extends model
 				'qt' => $qt,
 				'price' => $info['price'],
 				'name' => $info['name'],
-				//'image' => $primary_img
+				'image' => $prod_image['url']
 
 				);
 		}
-
+		
 		return $array;
 	}
 }
