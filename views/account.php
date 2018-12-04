@@ -41,7 +41,7 @@
 						<input type="text" name="cpf" value="<?php echo $user['cpf']; ?>" class="form-control" />
 					
 						<label for="password">Senha Atual:</label>
-						<input type="password"   value="12345678" class="form-control" placeholder="digite sua senha" name="old_password"/>
+						<input type="password"  class="form-control" placeholder="digite sua senha" name="old_password"/>
 				
 						<label for="new_password" style="display:none;">Nova Senha:</label>
 						<input type="password" class="form-control" placeholder="digite sua senha" style="display:none;" name="new_password"/>

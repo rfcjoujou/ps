@@ -18,25 +18,41 @@
 	<?php 
 	$subtotal = 0;
 	?>
+	
 	<?php foreach($productsInCart as $prod_cart): ?>
 	<?php 
+
 	$subtotal += (floatval($prod_cart['price']) * intval($prod_cart['qt']));
 	?>
+		
 
-		<tr>
 			
+			<tr>
+				
 
 
-			<td ><img  style="width:100px;height:100px;" src="<?php echo BASE_URL; ?>assets/images/prod/<?php echo $prod_cart['image']; ?>" /></td>
-			<td><?php echo utf8_encode($prod_cart['name']); ?></td>
-			<?php foreach($options_prod_cart as $prod_op_cart): ?>
-			<td><?php echo $prod_op_cart['color']; ?></td>
-			<td><?php echo $prod_op_cart['tamanho']; ?></td>
-			<?php endforeach; ?>
-			<td><?php echo $prod_cart['qt']; ?></td>
-			<td>R$ <?php echo number_format($prod_cart['price'], 2, ',', '.'); ?></td>
+				
+				
+				<td ><img  style="width:100px;height:100px;" src="<?php echo BASE_URL; ?>assets/images/prod/<?php echo $prod_cart['image']; ?>" /></td>
+				<td><?php echo utf8_encode($prod_cart['name']); ?></td>
 
-		</tr>
+					<?php foreach($options_prod_cart as $cartProd): ?>
+						
+						
+						<?php foreach($cartProd as $value_option): ?>
+
+							<td><?php echo $value_option['color']; ?></td>
+							<td><?php echo $value_option['tamanho']; ?></td>
+						<?php endforeach; ?>
+
+					<?php endforeach; ?>
+				
+				<td><?php echo $prod_cart['qt']; ?></td>
+				<td>R$ <?php echo number_format($prod_cart['price'], 2, ',', '.'); ?></td>
+				
+			</tr>
+			
+	
 	<?php endforeach; ?>
 
 	</tbody>
@@ -44,7 +60,7 @@
 <div style="float:right;margin-right:70px;margin-top:-25px;">
 	<p><strong>Subtotal: R$ <?php echo number_format($subtotal, 2, ',', '.'); ?></strong><p>
 </div>
+<?php print_r($productsInCart); ?><br/><br/>
+<?php print_r($options_prod_cart); ?><br/><br/> 
 
-
-
-
+?>

@@ -21,7 +21,9 @@ class cartController extends Controller
 			header("Location: ".BASE_URL);
 			exit;
 		}
-		
+			
+
+							
 
 		$dados['options_prod_cart'] =  $_SESSION['option_car'];
 
@@ -48,26 +50,38 @@ class cartController extends Controller
 					$_SESSION['cart'] = array();
 					$_SESSION['option_cart'] = array();
 				} 
+
 				
 
 
-				if(isset($_SESSION['cart'][$id])) {
 
-					$_SESSION['cart'][$id]=  $_SESSION['cart'][$id] + $qt;
+				/* Tenho que indetificar pela opção já que ela vai mudar, ao invés do id.*/
+	
+				if(isset($_SESSION['cart'][$id][$color]) && 
+					$_SESSION['cart'][$id][$color]['color'] == $color && 
+					$_SESSION['cart'][$id][$color]['tamanho'] == $tamanho
+					) {
+					echo 'entrou if';
+					foreach($_SESSION['cart'][$id] as $qt_val) {
+
+						$qt_val = intval($qt_val['qt']);
+
+						$qt_value = $qt_val + $qt;
+					}
+
+					$_SESSION['cart'][$id][$color] = array('qt' => $qt_value, 'id' => $id);
 
 					
-					
-
 
 				} else {
-					
-					$_SESSION['cart'][$id] = $qt;
-					
+					echo 'entrou else ';
+					$_SESSION['cart'][$id][$color] = array('color' =>$color, 'tamanho' => $tamanho, 'qt' => $qt, 'id' => $id);
+					$_SESSION['option_car'][$id][$color] = array('color' =>$color, 'tamanho' => $tamanho, 'id' => $id);
+				
 				}
-				$_SESSION['option_car'][$id] = array('color' =>$color, 'tamanho' => $tamanho);
 
 			}
-			header("Location: ".BASE_URL);
+			//header("Location: ".BASE_URL);
 		} else {
 			header("Location: ".BASE_URL.'login');
 		}
