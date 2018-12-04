@@ -56,31 +56,35 @@ class cartController extends Controller
 
 
 				/* Tenho que indetificar pela opção já que ela vai mudar, ao invés do id.*/
-	
-				if(isset($_SESSION['cart'][$id][$color]) && 
-					$_SESSION['cart'][$id][$color]['color'] == $color && 
-					$_SESSION['cart'][$id][$color]['tamanho'] == $tamanho
-					) {
-					echo 'entrou if';
-					foreach($_SESSION['cart'][$id] as $qt_val) {
+				if(!empty($_SESSION['cart'])) {
+					if(isset($_SESSION['cart'][$id])) {
+						foreach($_SESSION['cart'][$id] as $cor) {
+							if($cor == $color && $cor['tamanho'] == $tamanho) {
+								echo 'entrou no if dentro do foreach';
+								$_SESSION['option_car'][$id][$color] = array('color' => $color, 'tamanho' => $tamanho ,'qt' => $qt, 'id' => $id);
+								$_SESSION['cart'][$id][$color] = array('color' => $color, 'tamanho' => $tamanho ,'qt' => $qt, 'id' => $id);
+							}
+						}
 
-						$qt_val = intval($qt_val['qt']);
 
-						$qt_value = $qt_val + $qt;
+					} else {
+						$_SESSION['cart'][$id][$color] = array('color' => $color, 'tamanho' => $tamanho ,'qt' => $qt, 'id' => $id);
+						$_SESSION['option_car'][$id][$color] = array('color' => $color, 'tamanho' => $tamanho ,'qt' => $qt, 'id' => $id);
+						echo 'entrou no else';
+						exit;
 					}
 
-					$_SESSION['cart'][$id][$color] = array('qt' => $qt_value, 'id' => $id);
-
-					
-
 				} else {
-					echo 'entrou else ';
-					$_SESSION['cart'][$id][$color] = array('color' =>$color, 'tamanho' => $tamanho, 'qt' => $qt, 'id' => $id);
-					$_SESSION['option_car'][$id][$color] = array('color' =>$color, 'tamanho' => $tamanho, 'id' => $id);
-				
+					$_SESSION['cart'][$id][$color] = array('color' => $color, 'tamanho' => $tamanho ,'qt' => $qt, 'id' => $id);
 				}
+				print_r($_SESSION['cart']);
+				
+
+
+
 
 			}
+
 			//header("Location: ".BASE_URL);
 		} else {
 			header("Location: ".BASE_URL.'login');
