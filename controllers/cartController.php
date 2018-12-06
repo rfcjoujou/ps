@@ -22,14 +22,29 @@ class cartController extends Controller
 			exit;
 		}
 			
+				
 
-							
-
-		$dados['options_prod_cart'] =  $_SESSION['option_car'];
-
-		$dados['productsInCart'] = $cart->getListOfProductsInCart();
+		
 
 
+		$productsInCart = $cart->getListOfProductsInCart();
+
+
+		foreach($productsInCart as $prod_Carts_value) {
+
+
+
+			$id = $prod_Carts_value['id'];
+			$id_sub_cor = $prod_Carts_value['id_sub_cor'];
+				
+			$_SESSION['option_car'][$id][$id_sub_cor]['product_info'] = $prod_Carts_value;
+			
+
+		}
+
+		
+		
+		$dados['options_prod_cart'] = $_SESSION['option_car']; 
 
 
 		$this->loadTemplate('cart', $dados);
@@ -49,43 +64,52 @@ class cartController extends Controller
 				if(!isset($_SESSION['cart'])) {
 					$_SESSION['cart'] = array();
 					$_SESSION['option_cart'] = array();
+
 				} 
 
+				$products = new Products();
+
+				$id_option_size = $products->getId_p_valueByp_value($tamanho);
+				 
+				$id_option_cor = $products->getId_p_valueByp_value($color);
+					
+				foreach($id_option_size as $value_size) {
+
+					$id_option_size  = $value_size['id_p_value'];
+				}
+
+				//print_r($id_option_size);
+				foreach($id_option_cor as $value_color) {
+					$id_option_cor  = $value_color['id_p_value'];
+				}
 				
-
-
-
-				/* Tenho que indetificar pela opção já que ela vai mudar, ao invés do id.*/
-				if(!empty($_SESSION['cart'])) {
-					if(isset($_SESSION['cart'][$id])) {
-						foreach($_SESSION['cart'][$id] as $cor) {
-							if($cor == $color && $cor['tamanho'] == $tamanho) {
-								echo 'entrou no if dentro do foreach';
-								$_SESSION['option_car'][$id][$color] = array('color' => $color, 'tamanho' => $tamanho ,'qt' => $qt, 'id' => $id);
-								$_SESSION['cart'][$id][$color] = array('color' => $color, 'tamanho' => $tamanho ,'qt' => $qt, 'id' => $id);
-							}
-						}
-
-
-					} else {
-						$_SESSION['cart'][$id][$color] = array('color' => $color, 'tamanho' => $tamanho ,'qt' => $qt, 'id' => $id);
-						$_SESSION['option_car'][$id][$color] = array('color' => $color, 'tamanho' => $tamanho ,'qt' => $qt, 'id' => $id);
-						echo 'entrou no else';
-						exit;
-					}
+				if(isset($_SESSION['cart'][$id][$id_option_cor])) {
+/*					foreach($_SESSION['cart'][$id][$id_option_cor] as $key => $value) {
+						$value += $qt;
+					}*/
+					$_SESSION['cart'][$id][$id_option_cor] = array('color' =>$color, $id_option_size => array('tamanho' => $tamanho), 'qt' => $value);
+					print_r($value);
 
 				} else {
-					$_SESSION['cart'][$id][$color] = array('color' => $color, 'tamanho' => $tamanho ,'qt' => $qt, 'id' => $id);
+
+					$_SESSION['cart'][$id][$id_option_cor] = array('color' =>$color, 'id_sub_cor' => $id_option_cor ,'size' => $id_option_size ,$id_option_size => array('tamanho' => $tamanho), 'qt' => $qt);
+					
+					$_SESSION['option_car'][$id][$id_option_cor]  = array('color' =>$color, 'id_sub_cor' => $id_option_cor, 'size' => $id_option_size , 'tamanho' => $tamanho, 'qt' => $qt);
+
+
+
+					
 				}
-				print_r($_SESSION['cart']);
-				
 
 
+				/* Problema euy adiciono dois itens dentro de compra(com id iguias e opções diferentes),
+				 e no caso os dois itens tão entrando dentro do foreach e somando sendo assim ta dando 
+				 um erro(deveria só adicionar o id que o usuário "clico para comprar");
+				 */
 
-
+			
 			}
-
-			//header("Location: ".BASE_URL);
+			header("Location: ".BASE_URL);
 		} else {
 			header("Location: ".BASE_URL.'login');
 		}

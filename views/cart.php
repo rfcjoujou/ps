@@ -1,8 +1,8 @@
 <h3 style="text-align:center;margin-top:20px;">Carrinho de Compras</h3><br/>
-<?php print_r($productsInCart); ?><br/><br/>
-<?php print_r($options_prod_cart); ?><br/><br/> 
+<?php //print_r($productsInCart); ?><br/><br/>
+<?php //print_r($options_prod_cart); ?><br/><br/> 
 
-?>
+
 
 
 
@@ -24,44 +24,59 @@
 	<?php 
 	$subtotal = 0;
 	?>
-	
-	<?php foreach($productsInCart as $prod_cart): ?>
-	<?php 
 
-	$subtotal += (floatval($prod_cart['price']) * intval($prod_cart['qt']));
-	?>
+
+
+
 		
-			<?php foreach($options_prod_cart as $cartProd): ?>
-			<?php foreach($cartProd as $value_option): ?>
-			<tr>
+
+
+		
+
+
+		<?php foreach($options_prod_cart as $cartProd): ?>
+		<?php foreach($cartProd as $prodAllInformation): ?>
+		<?php print_r($prodAllInformation['product_info']); ?>
+		 <tr>
+		 	
+
 				
 
-
 				
-				
-				<td ><img  style="width:100px;height:100px;" src="<?php echo BASE_URL; ?>assets/images/prod/<?php echo $prod_cart['image']; ?>" /></td>
-				<td><?php echo utf8_encode($prod_cart['name']); ?></td>
-
-					
-						
-						
-					
-
-							<td><?php echo $value_option['color']; ?></td>
-							<td><?php echo $value_option['tamanho']; ?></td>
-					
-
 					
 				
-				<td><?php echo $prod_cart['qt']; ?></td>
-				<td>R$ <?php echo number_format($prod_cart['price'], 2, ',', '.'); ?></td>
 				
-			</tr>
-			<?php endforeach; ?>
-			<?php endforeach; ?>
+			
+				
+				
+				
+				<td ><img  style="width:100px;height:100px;" src="<?php echo BASE_URL; ?>assets/images/prod/<?php echo $prodAllInformation['product_info']['image']; ?>" /></td>
+				<td><?php echo utf8_encode($prodAllInformation['product_info']['name']); ?></td>
+				
+				
+				
+					
+				<?php 
+					$subtotal += (floatval($prodAllInformation['product_info']['price']) * intval($prodAllInformation['qt']));
+				?>
+
+
+				<td><?php echo $prodAllInformation['color']; ?></td>
+				<td><?php echo $prodAllInformation['tamanho']; ?></td>
+				<td><?php echo $prodAllInformation['qt']; ?></td> 
+			
+				
+			<td>R$ <?php echo number_format($prodAllInformation['product_info']['price'], 2, ',', '.'); ?></td>	
+																															
+							
+		</tr>
+	<?php endforeach; ?>	
 	<?php endforeach; ?>
+	<?php //endforeach; ?>
+	<?php //endforeach; ?>	
 
-	</tbody>
+
+	</tbody> 
 </table>
 <div style="float:right;margin-right:70px;margin-top:-25px;">
 	<p><strong>Subtotal: R$ <?php echo number_format($subtotal, 2, ',', '.'); ?></strong><p>

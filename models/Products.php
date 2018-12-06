@@ -57,6 +57,7 @@ class Products extends model
 	public function getInfoProducts($id, $img = 0) {
 		$array = array();
 
+
 		$sql = "SELECT * FROM products WHERE id = :id";
 		$sql = $this->db->prepare($sql);
 		$sql->bindValue(":id", $id);
@@ -68,7 +69,7 @@ class Products extends model
 
 
 		}
-
+		
 		return $array;
 
 	}
@@ -214,6 +215,22 @@ class Products extends model
 
 		}
 
+
+		return $array;
+	}
+
+	public function getId_p_valueByp_value($p_value) {
+		$array = array();
+
+		$sql = "SELECT id_p_value FROM products_options WHERE p_value = :p_value";
+		$sql = $this->db->prepare($sql);
+		$sql->bindValue(":p_value", $p_value);
+		$sql->execute();
+
+		if($sql->rowCount() > 0) {
+			$array = $sql->fetchAll();
+
+		}
 
 		return $array;
 	}

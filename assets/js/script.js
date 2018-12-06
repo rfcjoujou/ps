@@ -39,9 +39,9 @@ $(function(){
 			
 		}
 
-		
-		$('.addtocart_qt').val(qt);
 		$('input[name=qt_product').val(qt);
+		$('.addtocart_qt').val(qt);
+		
 
 	});
 
