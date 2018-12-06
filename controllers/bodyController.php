@@ -3,14 +3,14 @@ class bodyController extends Controller
 {
 
 	public function index() {
-		$dados = array();
+		$store = new Store();
 		$products = new Products();
 		$f = new Filters();
 
 		$filters['caract'] = 3;
 		/* Filtro de caracteristica dos produtos */
 		$filters_caract = array();
-
+		$dados = $store->getTemplateData();
 
 		if(!empty($_GET['filter']) && is_array($_GET['filter'])) {
 			

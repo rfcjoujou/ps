@@ -58,9 +58,10 @@ class usersController extends Controller
 	}
 
 	public function account() {
-		$dados = array();
+		$store = new Store();
 		$users = new Users();
 		$users_address = new Users_address();
+		$dados = $store->getTemplateData();
 		
 		if(!empty($_SESSION['cLogin'])) {
 			

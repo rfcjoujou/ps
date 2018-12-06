@@ -2,14 +2,14 @@
 class promocoesController extends Controller
 {
 	public function index() {
-		$dados = array();
+		$store = new Store();
 		$products = new Products();
 		$f = new Filters();
 
-
+		
 		$sale = array('sale' => '1');
 		$especif = array();
-		
+		$dados = $store->getTemplateData();
 		$filters = $sale;
 
 		/* Filtro de caracteristica dos produtos */

@@ -2,9 +2,9 @@
 class homeController extends Controller {
 
     public function index() {
-        $dados = array();
+        $store = new Store();
         $products = new Products();
-
+        $dados = $store->getTemplateData();
         $products = $products->getProducts(12);
         
 

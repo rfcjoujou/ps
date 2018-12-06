@@ -1,9 +1,8 @@
 <h3 style="text-align:center;margin-top:20px;">Carrinho de Compras</h3><br/>
-<?php //print_r($productsInCart); ?><br/><br/>
-<?php //print_r($options_prod_cart); ?><br/><br/> 
 
-
-
+<?php if(!isset($options_prod_cart) && !empty($options_prod_cart))  {
+	header("Location: ".BASE_URL);
+} ?>
 
 
 <table class="table table-hover">
@@ -17,7 +16,7 @@
 			<th width="50">Qtd.</th>
 			<th width="130">Preço</th>
 
-			<th  width="24"></th>
+			<th  width="20"></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -28,7 +27,7 @@
 
 
 
-		
+
 
 
 		
@@ -36,7 +35,9 @@
 
 		<?php foreach($options_prod_cart as $cartProd): ?>
 		<?php foreach($cartProd as $prodAllInformation): ?>
-		<?php print_r($prodAllInformation['product_info']); ?>
+		<?php foreach($prodAllInformation as $value_ProdAll): ?>
+		<?php print_r($options_prod_cart); ?>
+
 		 <tr>
 		 	
 
@@ -50,30 +51,29 @@
 				
 				
 				
-				<td ><img  style="width:100px;height:100px;" src="<?php echo BASE_URL; ?>assets/images/prod/<?php echo $prodAllInformation['product_info']['image']; ?>" /></td>
-				<td><?php echo utf8_encode($prodAllInformation['product_info']['name']); ?></td>
+				<td ><img  style="width:100px;height:100px;" src="<?php echo BASE_URL; ?>assets/images/prod/<?php echo $value_ProdAll['product_info']['image']; ?>" /></td>
+				<td><?php echo utf8_encode($value_ProdAll['product_info']['name']); ?></td>
 				
 				
 				
 					
 				<?php 
-					$subtotal += (floatval($prodAllInformation['product_info']['price']) * intval($prodAllInformation['qt']));
+					$subtotal += (floatval($value_ProdAll['product_info']['price']) * intval($value_ProdAll['qt']));
 				?>
 
 
-				<td><?php echo $prodAllInformation['color']; ?></td>
-				<td><?php echo $prodAllInformation['tamanho']; ?></td>
-				<td><?php echo $prodAllInformation['qt']; ?></td> 
+				<td><?php echo $value_ProdAll['color']; ?></td>
+				<td><?php echo $value_ProdAll['tamanho']; ?></td>
+				<td><?php echo $value_ProdAll['qt']; ?></td> 
 			
 				
-			<td>R$ <?php echo number_format($prodAllInformation['product_info']['price'], 2, ',', '.'); ?></td>	
-																															
+			<td>R$ <?php echo number_format($value_ProdAll['product_info']['price'], 2, ',', '.'); ?></td>	
+			<td><div style="width:28px;height:28px;padding:1px;padding-left:3px;" class="delete_prod"><a href="<?php echo BASE_URL; ?>cart/del/<?php echo $value_ProdAll['product_info']['id']; ?>/<?php echo $value_ProdAll['product_info']['id_sub_cor']; ?>/<?php echo $value_ProdAll['product_info']['size']; ?> "><img  style="width:22px;height:22px;" src="<?php echo BASE_URL; ?>assets/images/del.png" /></a></div></td>																											
 							
 		</tr>
+	<?php endforeach; ?>
 	<?php endforeach; ?>	
 	<?php endforeach; ?>
-	<?php //endforeach; ?>
-	<?php //endforeach; ?>	
 
 
 	</tbody> 

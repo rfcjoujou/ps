@@ -2,7 +2,7 @@
 class lancamentoController extends Controller 
 {
 	public function index() {
-		$dados = array();
+		$store = new Store();
 		$filters_caract = array();	/* Filtro de caracteristica dos produtos */
 		$dados = array();
 
@@ -10,7 +10,7 @@ class lancamentoController extends Controller
 		$products = new Products();
 		$f = new Filters();
 
-
+		$dados = $store->getTemplateData();
 
 		$filters = array('new_product' => '1');
 		$especif = array();

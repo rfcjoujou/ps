@@ -37,8 +37,23 @@
 					</div>
 					<div class="col-sm-2">
 						<div class="icones">
-							<a href="<?php echo BASE_URL; ?>" > <img height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/heart.png" /></a>
-							<a href="<?php echo BASE_URL; ?>cart"> <img height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/bag.png" /></a>
+
+							<a href="<?php echo BASE_URL; ?>" > <img padding-right="-4px" height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/heart.png" /></a>
+							<div class="cartContainer">
+								<a class="icone_cartInt" href="<?php echo BASE_URL; ?>cart"> <img height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/bag.png" />
+									<!-- Shop -->
+									
+									<?php if(isset($viewData['quantity_itemInCart']) && !empty($viewData['quantity_itemInCart'])): ?>
+									
+
+									<div class="SpanQuantityInCart">
+										<span class="cartqt"><?php print_r($viewData['quantity_itemInCart']); ?><span>
+										
+									</div>
+									
+									<?php endif; ?>
+								</a>
+							</div>
 							<a href="<?php echo BASE_URL; ?>login" ><img  onmove="touch_item()" height="28px" width="28px" src="<?php echo BASE_URL; ?>assets/media/menu_icone/user.png" /></a>
 						</div>
 					</div>

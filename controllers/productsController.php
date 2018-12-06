@@ -9,10 +9,13 @@ class productsController extends Controller
 	}
 
 	public function open($id) {
-		$dados = array();
+		$store = new Store();
 		$products = new Products();
 		$image = new Products_images();
 
+
+		$dados = $store->getTemplateData();
+		
 		if(!empty($id)) {
 			$id = addslashes($id);
 			$info = $products->getInfoProducts($id);

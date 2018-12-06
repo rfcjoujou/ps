@@ -2,10 +2,11 @@
 class saiaController extends Controller
 {
 	public function index() {
-		$dados = array();
+		$store = new Store();
 		$products = new Products();
 		$f = new Filters();
 
+		$dados = $store->getTemplateData();
 		$filters['caract'] = 8;
 		/* Filtro de caracteristica dos produtos */
 		$filters_caract = array();

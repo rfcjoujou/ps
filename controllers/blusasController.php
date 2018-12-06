@@ -3,9 +3,17 @@ class blusasController extends Controller
 {
 	
 	public function index() {
-		$dados = array();
+
+		$store = new Store();
 		$products = new Products();
 		$f = new Filters();
+		
+
+
+
+		$dados = $store->getTemplateData();
+
+
 
 		$filters['caract'] = '5';
 		/* Filtro de caracteristica dos produtos */
@@ -42,6 +50,8 @@ class blusasController extends Controller
 		}
 
 
-		$this->loadTemplate('blusas', $dados);
+
+
+		$this->loadTemplate('categories_products', $dados);
 	}
 }
