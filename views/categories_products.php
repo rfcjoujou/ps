@@ -1,5 +1,8 @@
 <!--  Aqui seria pegos as categories do produto, e mostrada a categoria que foi selecionada, 
 ficando responsivo as categorias -->
+
+
+
 <div class="row">
 	<div class="col-sm-3">
 		<div class="sidebar">

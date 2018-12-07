@@ -87,6 +87,9 @@ $(function(){
 	}); */
 
 	$('.filterarea').find('input').on('change', function() {
+
+
+
 		$('.filterarea form').submit();
 
 		
@@ -111,9 +114,7 @@ $(function(){
 		$('label[for=new_password').css('display', 'block');
  		$('input[name=new_password]').css('display', 'block');
 	});
-
-
-
+ 
 
 	/* Plugin de mascara ativado no projeto (mask plugin[o nome])*/
 

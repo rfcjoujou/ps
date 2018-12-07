@@ -67,18 +67,20 @@
 				<div class="row" style="width:100%;">
 					<div class="col-sm list_menu">
 
-
-							<ul >
-								
-								<li><a class="btn " href="<?php echo BASE_URL; ?>calca" >Calça</a></li>
-								<li><a class="btn " href="<?php echo BASE_URL; ?>shorts"  >Shorts</a></li>
-								<li><a class="btn" href="<?php echo BASE_URL; ?>blusas"  >Blusas</a></li>
-								<li><a class="btn" href="<?php echo BASE_URL; ?>saia"  >Saia</a></li>
+						<form method="POST" action="<?php echo BASE_URL; ?>Categories">
+							<ul class="botoes_menu_form">
 								<li><a class="btn " href="<?php echo BASE_URL; ?>promocoes" >Promoções</a></li>
 								<li><a class="btn " href="<?php echo BASE_URL; ?>lancamento" >Lançamento</a></li>
+								<li><a class="btn " href="<?php echo BASE_URL; ?>calca" >Calças</a></li>
+								<li><a class="btn " href="<?php echo BASE_URL; ?>shorts"  >Shorts</a></li>
+								<li><a class="btn" href="<?php echo BASE_URL; ?>blusas"  >Blusas</a></li>
+								<li><a class="btn" href="<?php echo BASE_URL; ?>saia"  >Saias</a></li>
+
 								<li><a class="btn" href="<?php echo BASE_URL; ?>body">Body</a></li>
-								<li><a class="btn" href="<?php echo BASE_URL; ?>vestido">Vestido</a></li>
+								<li><a class="btn" href="<?php echo BASE_URL; ?>vestido">Vestidos</a></li>
 							</ul>
+						
+						</form>
 
 					</div>
 

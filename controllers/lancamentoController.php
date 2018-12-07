@@ -3,22 +3,19 @@ class lancamentoController extends Controller
 {
 	public function index() {
 		$store = new Store();
-		$filters_caract = array();	/* Filtro de caracteristica dos produtos */
-		$dados = array();
+		$categoriesTemplate = new CategoriesTemplate();
 
 
-		$products = new Products();
-		$f = new Filters();
 
 		$dados = $store->getTemplateData();
 
 		$filters = array('new_product' => '1');
 		$especif = array();
-		
+		$dados = $categoriesTemplate->EspecifCategoriesOfProduct($filters, $especif);
 		
 
 
-		if(!empty($_GET['filter']) && is_array($_GET['filter'])) {
+		/*if(!empty($_GET['filter']) && is_array($_GET['filter'])) {
 			
 			
 			$filters_caract = $_GET['filter'];
@@ -36,7 +33,7 @@ class lancamentoController extends Controller
 
 
 
-		/*$filters_caract = array('options' => $filters_caract);*/
+		// $filters_caract = array('options' => $filters_caract);
 
 		
 		$product = $products->getProducts(0, $filters, $filters_caract);
@@ -55,7 +52,7 @@ class lancamentoController extends Controller
 			$dados['products'] = array();
 			$dados['filters'] = array();
 
-		}
+		}*/
 
 
 		$this->loadTemplate('categories_products', $dados);
