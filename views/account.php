@@ -31,7 +31,7 @@
 						<?php endif; ?>
 
 					<form method="POST">
-						<?php header('Content-Type: text/html; charset=utf-8'); ?>
+						<?php //header('Content-Type: text/html; charset=utf-8'); ?>
 						<label for="name">Nome:</label>
 						<input type="text" value="<?php echo utf8_encode($user['name']); ?>" class="form-control"  name="name"/>
 						

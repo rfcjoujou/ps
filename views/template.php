@@ -25,13 +25,17 @@
 						</div>
 					</div>
 					<div class="col-sm-7" id="div_busca">
-						<div class="container_busca">
-							<input type="text" id="busca" name="busca" class="form-control" />
-						
-							<button class="botao_busca btn">
-								 <img src="<?php echo BASE_URL; ?>assets/media/menu_icone/search.png" /> 
-							</button>
-						</div>
+
+						<form method="GET" action="<?php echo BASE_URL; ?>search">
+							
+							<div class="container_busca">
+								<input type="text" id="busca" name="busca" class="form-control" />
+							
+								<button class="botao_busca btn">
+									 <img src="<?php echo BASE_URL; ?>assets/media/menu_icone/search.png" /> 
+								</button>
+							</div>
+						</form>
 
 
 					</div>
@@ -67,20 +71,20 @@
 				<div class="row" style="width:100%;">
 					<div class="col-sm list_menu">
 
-						<form method="POST" action="<?php echo BASE_URL; ?>Categories">
-							<ul class="botoes_menu_form">
-								<li><a class="btn " href="<?php echo BASE_URL; ?>promocoes" >Promoções</a></li>
-								<li><a class="btn " href="<?php echo BASE_URL; ?>lancamento" >Lançamento</a></li>
-								<li><a class="btn " href="<?php echo BASE_URL; ?>calca" >Calças</a></li>
-								<li><a class="btn " href="<?php echo BASE_URL; ?>shorts"  >Shorts</a></li>
-								<li><a class="btn" href="<?php echo BASE_URL; ?>blusas"  >Blusas</a></li>
-								<li><a class="btn" href="<?php echo BASE_URL; ?>saia"  >Saias</a></li>
-
-								<li><a class="btn" href="<?php echo BASE_URL; ?>body">Body</a></li>
-								<li><a class="btn" href="<?php echo BASE_URL; ?>vestido">Vestidos</a></li>
-							</ul>
 						
-						</form>
+						<ul class="botoes_menu_form">
+							<li><a class="btn " href="<?php echo BASE_URL; ?>promocoes" >Promoções</a></li>
+							<li><a class="btn " href="<?php echo BASE_URL; ?>lancamento" >Lançamento</a></li>
+							<li><a class="btn " href="<?php echo BASE_URL; ?>calca" >Calças</a></li>
+							<li><a class="btn " href="<?php echo BASE_URL; ?>shorts"  >Shorts</a></li>
+							<li><a class="btn" href="<?php echo BASE_URL; ?>blusas"  >Blusas</a></li>
+							<li><a class="btn" href="<?php echo BASE_URL; ?>saia"  >Saias</a></li>
+
+							<li><a class="btn" href="<?php echo BASE_URL; ?>body">Body</a></li>
+							<li><a class="btn" href="<?php echo BASE_URL; ?>vestido">Vestidos</a></li>
+						</ul>
+						
+						
 
 					</div>
 
@@ -206,7 +210,7 @@
     						<h5 class="text-uppercase" style="font-size:20px;">Contatos</h5>
     						
 
-    						<a href="https://www.instagram.com/arrazoblend/?hl=pt-br"><img src="assets/images/instagraam.png"/></a>
+    						<a href="https://www.instagram.com/arrazoblend/?hl=pt-br"><img widht="26px" height="26px" src="assets/media/footer_icone/instagr.png"/></a>
     						<p></p>
 
     						

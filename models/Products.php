@@ -54,6 +54,35 @@ class Products extends model
 		return $array;
 	}
 
+
+	public function getProductsBySearch($search) {
+
+		/* Tenho que fazer uma subquery para pegar os valores caso o usuário digite o tamanho
+			Ou a cor do produto, mas não funcionou
+		*/
+		$array = array();
+		$sql = "SELECT * FROM products WHERE name LIKE :search OR description LIKE  :search_description";
+		$sql = $this->db->prepare($sql);
+		$sql->bindValue(":search", '%'.$search.'%');
+		$sql->bindValue(":search_description", '%'.$search.'%');
+		$sql->execute();
+
+
+		if($sql->rowCount() > 0) {
+			$array = $sql->fetchAll();
+			$product_img = new Products_images();
+
+			foreach($array as $key => $item) {
+				$array[$key]['images'] = $product_img->getImagesById($item['id']);
+
+			}
+
+		}
+
+		return $array;
+	}
+
+
 	public function getInfoProducts($id, $img = 0) {
 		$array = array();
 
@@ -77,7 +106,7 @@ class Products extends model
 
 	public function getQuantityOptionById($id) {
 		$array = array();
-		$sql = "SELECT * FROM products_options WHERE id_product = :id";
+		$sql = "SELECT * FROM products_options WHERE id_product = :id GROUP BY p_value";
 		$sql = $this->db->prepare($sql);
 		$sql->bindValue(":id", $id);
 		$sql->execute();
@@ -87,9 +116,12 @@ class Products extends model
 
 			if(!empty($array)) {
 				$options = New Options();
+
+
 				foreach($array as $op_id) {
 
-				$array['option_name'] = $options->getName($op_id['id_option']);
+
+					$array['option_name'] = $options->getName($op_id['id_option']);
 				}
 
 
@@ -128,7 +160,7 @@ class Products extends model
 
 
 		$where = $this->buildWhere($filters);
-
+		
 
 		$sql = "SELECT 
 		id,options
@@ -243,7 +275,18 @@ class Products extends model
 
 
 
+		if(!empty($filters['name'])) {
 
+				$where[] = "name IN ('".implode("','", $filters['name'])."') ";
+				
+	
+		}
+
+		if(!empty($filters['description'])) {
+						
+				$where[] = "description IN ('".implode("','", $filters['description'])."')";
+
+		}
 
 		if(!empty($filters['caract'])) {
 			$where[] = "id_category = ".$filters['caract'];
@@ -283,6 +326,11 @@ class Products extends model
 
 	private function bindWhere($filters, &$sql) {
 		
+
+
+
+
+
 		if(!empty($filters['p_value'])) {
 			$sql->bindValue(':p_value', $filters['p_value']);
 		}

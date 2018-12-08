@@ -12,6 +12,7 @@
 
 		<?php endif; ?>
 		<form method="POST" style="margin-bottom:50px;margin-top:-25px;">
+			
 			<label for="name">Nome:</label>
 			<input type="text" name="name" class="form-control" placeholder="seu nome."/><br/>
 

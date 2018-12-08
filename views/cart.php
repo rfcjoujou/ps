@@ -36,7 +36,7 @@
 		<?php foreach($options_prod_cart as $cartProd): ?>
 		<?php foreach($cartProd as $prodAllInformation): ?>
 		<?php foreach($prodAllInformation as $value_ProdAll): ?>
-		<?php print_r($options_prod_cart); ?>
+		
 
 		 <tr>
 		 	
