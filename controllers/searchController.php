@@ -3,8 +3,10 @@ class searchController extends Controller
 {
 	public function index() {
 		$store = new Store();
+				
 		
-
+		print_r($_GET);
+		
 		
 		$dados = $store->getTemplateData();
 		$busca = "";
@@ -26,9 +28,10 @@ class searchController extends Controller
 
             $dados['FilterSearch'] = $categoriesTemplate->getTemplateSearchCategories($filters, $product_search);
 
+            $dados['busca'] = array('busca' => $busca);
             $this->loadTemplate('Search_products', $dados);
         } else {
-        	header('Location: '.BASE_URL);
+        	//header('Location: '.BASE_URL);
         	exit;
         }
 

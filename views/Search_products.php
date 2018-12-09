@@ -1,13 +1,18 @@
-<?php print_r($FilterSearch); ?>
+<?php //print_r($FilterSearch); ?>
 
 
 <div class="row">
 	<div class="col-sm-3">
 		<div class="sidebar">
-		
+			
+			<?php if(!empty($busca) && isset($busca)) {
 
-			<?php $this->loadView('sidebar', array('filters' => $FilterSearch['filters'], 'filters_selected' => $FilterSearch['filters_selected'])); ?>
-
+				$this->loadView('sidebar', array('filters' => $FilterSearch['filters'], 'filters_selected' => $FilterSearch['filters_selected'], 'busca' => $busca)); 
+			} else {
+			 
+				$this->loadView('sidebar', array('filters' => $FilterSearch['filters'], 'filters_selected' => $FilterSearch['filters_selected'])); 
+			}
+			?>
 		</div>
 	</div>
 		

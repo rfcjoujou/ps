@@ -24,6 +24,11 @@
 			<aside>
 				<div class="filtercontent">
 
+						<?php if(isset($busca) && !empty($busca)): ?>
+								
+								<input type="hidden" name="busca" value="<?php echo $busca['busca']; ?>"  /> 
+							
+						<?php endif; ?>
 						<?php foreach($viewData['filters']['options'] as $option): ?>
 							<strong><?php echo $option['name']; ?></strong><br/>
 							<?php foreach($option['options'] as $op): ?>
@@ -32,10 +37,13 @@
 									<!--  To tentando fzer uma verificação caso exista algo na url entra no if e colocar o filtro junto
 											Caso não tenha só passa o nome
 									 -->
-									<a href="" style="color:#000;text-decoration:none;" id="filter_options<?php echo $op['id']; ?>">
-										<input type="checkbox" <?php echo (isset($viewData['filters_selected']['options']) && in_array($op['value'], $viewData['filters_selected']['options']))?'checked="checked"':''; ?> name="<?php echo (!empty($_GET['busca']) && isset($_GET['busca']))?'"&filter[options][]"':'filter[options][]'; ?>"   id="filter_option<?php echo $op['id']; ?>"  value="<?php echo $op['value']; ?>"/> 
-										
-										<label for="filter_options<?php echo $op['id']; ?>"><?php echo $op['value']; ?></label>
+
+									<a href="" style="color:#000;text-decoration:none;" >
+									
+
+										<input type="checkbox" <?php echo (isset($viewData['filters_selected']['options']) && in_array($op['value'], $viewData['filters_selected']['options']))?'checked="checked"':''; ?> name="filter[options][]"   id="filter_option<?php echo $op['value']; ?>"  value="<?php echo $op['value']; ?>"/> 
+									
+										<label style="cursor:pointer;" for="filter_option<?php echo $op['value']; ?>"><?php echo $op['value']; ?></label>
 										<span style="float:right">(<?php echo $op['count']; ?>)</span>
 									</a>	
 								</div>	

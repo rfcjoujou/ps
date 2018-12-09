@@ -86,14 +86,29 @@ $(function(){
 
 	}); */
 
+
+	
+
+	/*$('.filterare').find('a').on('click', function(e) {
+		e.preventDefault();
+		var input = $(this).find('input').attr('name');
+		var href = $(this).val('href');
+		($this).attr('href', href+'&?'+input);
+
+		$(this).
+	});*/
+
+
 	$('.filterarea').find('input').on('change', function() {
 
+		
 
 
 		$('.filterarea form').submit();
 
-		
 	});
+
+
 
 	$('.filter_item a').on('click', function(e) {
 		e.preventDefault();
