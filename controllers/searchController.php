@@ -5,7 +5,7 @@ class searchController extends Controller
 		$store = new Store();
 				
 		
-		print_r($_GET);
+		//print_r($_GET);
 		
 		
 		$dados = $store->getTemplateData();
@@ -24,9 +24,9 @@ class searchController extends Controller
 
             $filters = array();
 
-            $product_search = $products->getProductsBySearch($busca);
+           
 
-            $dados['FilterSearch'] = $categoriesTemplate->getTemplateSearchCategories($filters, $product_search);
+            $dados['FilterSearch'] = $categoriesTemplate->getTemplateSearchCategories($filters, $busca);
 
             $dados['busca'] = array('busca' => $busca);
             $this->loadTemplate('Search_products', $dados);

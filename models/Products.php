@@ -55,21 +55,36 @@ class Products extends model
 	}
 
 
-	public function getProductsBySearch($search) {
+	public function getProductsBySearch($search, $filters) {
+
+
+
+
+
+		
 
 		/* Tenho que fazer uma subquery para pegar os valores caso o usuário digite o tamanho
 			Ou a cor do produto, mas não funcionou
 		*/
+
+		$where = $this->buildWhere($filters);
+
 		$array = array();
-		$sql = "SELECT * FROM products WHERE name LIKE :search OR description LIKE  :search_description";
+		$sql = "SELECT * FROM products WHERE ".implode(' AND ', $where)." AND
+		name LIKE :search AND description LIKE  :search_description";
 		$sql = $this->db->prepare($sql);
 		$sql->bindValue(":search", '%'.$search.'%');
 		$sql->bindValue(":search_description", '%'.$search.'%');
+		$this->bindWhere($filters,$sql);
+		print_r($sql);
+		exit;
 		$sql->execute();
 
 
 		if($sql->rowCount() > 0) {
+
 			$array = $sql->fetchAll();
+
 			$product_img = new Products_images();
 
 			foreach($array as $key => $item) {
@@ -78,6 +93,8 @@ class Products extends model
 			}
 
 		}
+
+
 
 		return $array;
 	}
@@ -314,8 +331,8 @@ class Products extends model
 
 
 		if(!empty($filters['options'])) {
-		
-			$where[] = "id IN (select id_product from products_options where products_options.p_value IN ('".implode("','", $filters['options'])."'))";
+
+			$where[] = "id IN (select id_product from products_options where products_options.p_value IN ('".implode("' AND '", $filters['options'])."'))";
 		
 		}
 

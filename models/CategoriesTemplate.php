@@ -94,7 +94,7 @@ class CategoriesTemplate extends model
 	}
 
 
-	public function getTemplateSearchCategories($filters, $product_search) {
+	public function getTemplateSearchCategories($filters, $busca) {
 		$products = new Products();
 		$f = new Filters();
 
@@ -104,20 +104,24 @@ class CategoriesTemplate extends model
 		if(!empty($_GET['filter']) && is_array($_GET['filter'])) {
 			
 			
-			$filters_caract = $_GET['filter'];
+			$filters_caract = $_GET['filter']['options'];
+
 
 		}
 
-		$dados['filters_selected'] = $filters_caract;
 
 
-		
+		$dados['filters_selected']['options'] = $filters_caract;
+
 
 
 		$filters['options'] = $filters_caract;
 
+		$product_search = $products->getProductsBySearch($busca, $filters);
+			/* Se clica no rosa aparecer um, mas se clica no 36 aparece, varios BUG*/
 
 		$product = $product_search;
+
 		if(!empty($product)) {
 			foreach($product as $product_name) {
 				$filters['name'][] = $product_name['name'];	

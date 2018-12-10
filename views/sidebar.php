@@ -26,13 +26,14 @@
 
 						<?php if(isset($busca) && !empty($busca)): ?>
 								
-								<input type="hidden" name="busca" value="<?php echo $busca['busca']; ?>"  /> 
+								<input type="hidden" name="busca" value="<?php echo utf8_encode($busca['busca']); ?>"  /> 
 							
 						<?php endif; ?>
+
 						<?php foreach($viewData['filters']['options'] as $option): ?>
 							<strong><?php echo $option['name']; ?></strong><br/>
 							<?php foreach($option['options'] as $op): ?>
-
+								
 								<div class="filteritem">
 									<!--  To tentando fzer uma verificação caso exista algo na url entra no if e colocar o filtro junto
 											Caso não tenha só passa o nome
